@@ -1,0 +1,7 @@
+- Brief (copy paste from exercise)
+- 2 screenshots of the final result (interaction)
+- Short project description (general concept, functional logic and interaction modalities, 300 characters)
+- Block diagram (flow, con [draw.io](http://draw.io), export in svg)
+- Lista funzioni (name of the function, arguments, description, what it returns)
+- Content and data sources (link)
+- API documentation (if any)
