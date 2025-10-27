@@ -37,6 +37,7 @@
             <template id="pin-template">
                 <li class="masonry-pin">
                     <a href="#">
+                        <span class="material-icons">link</span>
                         <img src="https://placecats.com/200/300">
                         <h3 class="masonry-pin-title"></h3>
                         <p class="masonry-pin-description"></p>
@@ -95,78 +96,23 @@
 
             <!------------------------------------------------------------------------------------------------------------>
 
-            <section id="update-section">
-                <form id="update-pin-form">
-                    <h2>Update Pin</h2>
-
-                    <span class="material-icons upload-icon">upload</span>
-                    <label for="update-pin-image">Choose a new image to upload</label>
-                    <!-- Use the id to load the actual image -->
-                    <input type="file" id="update-pin-image" name="update-pin-image" accept="image/*">
-                    <p>We recommend using jpg files of high quality of less than 20MB.</p>
-
-                    <fieldset>
-                        <legend>Choose a color:</legend>
-                        <label for="update-green">Green</label>
-                        <!-- Use one of the radio id to set the active color -->
-                        <input type="radio" id="update-green" name="update-pin-color" value="green">
-                        <label for="update-yellow">Yellow</label>
-                        <input type="radio" id="update-yellow" name="update-pin-color" value="yellow">
-                        <label for="update-orange">Orange</label>
-                        <input type="radio" id="update-orange" name="update-pin-color" value="orange">
-                        <label for="update-red">Red</label>
-                        <input type="radio" id="update-red" name="update-pin-color" value="red">
-                        <label for="update-purple">Purple</label>
-                        <input type="radio" id="update-purple" name="update-pin-color" value="purple">
-                        <label for="update-blue">Blue</label>
-                        <input type="radio" id="update-blue" name="update-pin-color" value="blue">
-                        <label for="update-pink">Pink</label>
-                        <input type="radio" id="update-pink" name="update-pin-color" value="pink">
-                        <label for="update-white">White</label>
-                        <input type="radio" id="update-white" name="update-pin-color" value="white">
-                        <label for="update-gray">Gray</label>
-                        <input type="radio" id="update-gray" name="update-pin-color" value="gray">
-                        <label for="update-black">Black</label>
-                        <input type="radio" id="update-black" name="update-pin-color" value="black">
-                    </fieldset>
-
-                    <label for="update-pin-title">Title:</label>
-                    <!-- Use the id to load the actual title -->
-                    <input type="text" id="update-pin-title" name="update-pin-title" placeholder="Add a title" required>
-
-                    <label for="update-pin-description">Description:</label>
-                    <!-- Use the id to load the actual description -->
-                    <textarea id="update-pin-description" name="update-pin-description" placeholder="Add a detail description"></textarea>
-
-                    <label for="update-pin-link">Link:</label>
-                    <!-- Use the id to load the actual link -->
-                    <input type="url" id="update-pin-link" name="update-pin-link" placeholder="Add a link">
-
-                    <button type="submit">Update Pin</button>
-                </form>
-            </section>
-
-            <!------------------------------------------------------------------------------------------------------------>
-
-            <section id="list-section">
+            <!-- <section id="list-section">
                 <h2>Pins History</h2>
                 <ol>
-                    <!-- date separators will be dynamically added here -->
-                </ol>
             </section>
 
-            <template id="list-date-separator">
+            <template id="list-date-separator-template">
                 <li class="date-separator">
-                    <p class="date-label"><!-- date eg. 27/10/2025 --></p>
+                    <p class="date-label"></p>
                     <ol>
-                        <!-- list items will be dynamically added here -->
                     </ol>
                 </li>
             </template>
 
-            <template id="list-item-template">
+            <template id="pin-list-item-template">
                 <li class="list-item">
                     <a href="#">
+                        <span class="material-icons">link</span>
                         <img src="https://placecats.com/100/100">
                         <div class="list-item-info">
                             <h3></h3>
@@ -174,7 +120,7 @@
                         </div>
                     </a>
                 </li>
-            </template>
+            </template> -->
 
             <!------------------------------------------------------------------------------------------------------------>
 
@@ -235,10 +181,10 @@
             <span class="material-icons">add_circle</span>
             <span>New pin</span>
         </a>
-        <a href="#list-section">
+        <!-- <a href="#list-section">
             <span class="material-icons">list</span>
             <span>List</span>
-        </a>
+        </a> -->
     </nav>
 </body>
 </html>
