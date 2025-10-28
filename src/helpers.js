@@ -5,6 +5,20 @@ const displaySection = (id) => {
 
     // Try to show the section corresponding to the given id 
     document.querySelector(`#${id}-section`)?.classList.add('active');
+
+    if(id === 'create') {
+        // Hide the search bar when displaying the create section
+        document.querySelector('header').classList.add('no-search-bar');
+        // Reset the create pin form
+        const createPinForm = document.querySelector('#create-pin-form');
+        createPinForm.reset();
+        // Reset the image preview
+        const imagePreview = createPinForm.querySelector('img');
+        imagePreview.src = '';
+    } else {
+        // Show the search bar for other sections
+        document.querySelector('header').classList.remove('no-search-bar');
+    }
 };
 
 // Hide the active nav link and show the link coresponding to the given id

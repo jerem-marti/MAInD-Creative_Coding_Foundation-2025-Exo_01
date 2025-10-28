@@ -77,7 +77,7 @@ header #search-input {
   flex: 1;
   max-width: 1440px;
   padding: 1rem;
-  margin: 2rem 2rem 0 2rem;
+  margin: 2rem;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   color: var(--secondary-color);
@@ -95,7 +95,7 @@ header #search-input::-webkit-search-results-decoration { display: none; }
 header #search-button {
   position: absolute;
   right: calc(var(--border-radius) + 2rem);
-  bottom: var(--border-radius);
+  bottom: calc(var(--border-radius) + 2rem);
   cursor: pointer;
   font-size: 3rem;
 }
@@ -118,6 +118,10 @@ header #search-button.active .search-icon {
 
 header #search-button.active .close-icon {
     display: inline;
+}
+
+header.no-search-bar #search-input, header.no-search-bar #search-button {
+    visibility: hidden;
 }
 
 /********************************************************************************/
