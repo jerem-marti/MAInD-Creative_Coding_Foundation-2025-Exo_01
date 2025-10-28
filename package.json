@@ -1,0 +1,19 @@
+{
+  "name": "pinboard",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel --no-cache",
+    "build": "parcel build"
+  },
+  "keywords": [],
+  "author": "Jeremy Martin",
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/packager-raw-url": "2.16.0",
+    "@parcel/transformer-webmanifest": "2.16.0",
+    "parcel": "2.16.0"
+  }
+}
