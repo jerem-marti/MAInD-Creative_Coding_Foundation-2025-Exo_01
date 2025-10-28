@@ -1,0 +1,32 @@
+:root {
+  /* Colors */
+  --primary-color: #0474ff;
+  --primary-color-dark: #002450;
+  --secondary-color: #181818;
+  --bg-color: #121212;
+  --text-color: #fff;
+  --border-color: #272727;
+  --grey-light: #9c9c9c;
+
+  /* Globals */
+  --border-radius: 0.5rem;
+
+  /* Animations */
+  /*
+    only set the default transition parameters.
+    This allows to have consistent animations, but leaves the freedom to the element to choose which attribute(s) to animate.
+  */
+  --default-transition: 300ms ease-in-out;
+
+  /* Card colors */
+  --card-color-green: hsl(120, 100%, 80%);
+  --card-color-yellow: hsl(60, 100%, 70%);
+  --card-color-orange: hsl(39, 100%, 70%);
+  --card-color-red: hsl(0, 100%, 70%);
+  --card-color-purple: hsl(276, 100%, 79%);
+  --card-color-blue: hsl(202, 100%, 74%);
+  --card-color-pink: hsl(326, 98%, 81%);
+  --card-color-white: hsl(0, 0%, 100%);
+  --card-color-gray: hsl(0, 0%, 69%);
+  --card-color-black: hsl(0, 0%, 0%);
+}

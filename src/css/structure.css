@@ -1,0 +1,158 @@
+/********************************************************************************/
+/* html body */
+
+/* Make sure the html and body take the full height of the viewport */
+html, body {
+  height: 100dvh;
+}
+
+body {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: var(--bg-color);
+}
+
+body .container {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/********************************************************************************/
+/* nav */
+
+nav {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  margin: 0;
+  gap: 1rem;
+  background: var(--primary-color);
+  max-width: 1440px;
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+}
+
+nav a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav a * {
+  transition: color var(--default-transition);
+  text-align: center;
+}   
+
+nav a:hover *, 
+nav a.active * {
+  background: var(--primary-color);
+}
+
+nav a .material-icons {
+  font-size: 2.5rem;
+}
+
+/********************************************************************************/
+/* header */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  background: linear-gradient(0deg, var(--bg-color) 0%, var(--primary-color-dark) 150%);
+}
+
+header #search-input {
+  flex: 1;
+  max-width: 1440px;
+  padding: 1rem;
+  margin: 2rem 2rem 0 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--secondary-color);
+}
+
+/* clears the ‘X’ from Internet Explorer */
+header #search-input::-ms-clear { display: none; width : 0; height: 0; }
+header #search-input::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from Chrome */
+header #search-input::-webkit-search-decoration,
+header #search-input::-webkit-search-cancel-button,
+header #search-input::-webkit-search-results-button,
+header #search-input::-webkit-search-results-decoration { display: none; }
+
+header #search-button {
+  position: absolute;
+  right: calc(var(--border-radius) + 2rem);
+  bottom: var(--border-radius);
+  cursor: pointer;
+  font-size: 3rem;
+}
+
+header .material-icons {    
+  color: var(--secondary-color);
+}
+
+header #search-button .close-icon {
+  display: none;
+}
+
+header #search-button .search-icon {
+  display: inline;
+}
+
+header #search-button.active .search-icon {
+    display: none;
+}
+
+header #search-button.active .close-icon {
+    display: inline;
+}
+
+/********************************************************************************/
+/* main */
+
+main {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+main section {
+  flex-direction: column;
+  display: none;
+  margin: auto;
+  max-width: 1440px;
+}
+
+main section.active {
+    display: flex;
+}
+
+/********************************************************************************/
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+::-webkit-scrollbar-track {
+  background: var(--border-color);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--grey-light);
+  border-radius: var(--border-radius);
+  border: 0.06rem solid var(--border-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color);
+}

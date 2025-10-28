@@ -1,0 +1,219 @@
+/********************************************************************************/
+/* pin form */
+
+#create-pin-form {
+  display: flex;
+  align-items: stretch;
+  gap: 2rem;
+}
+
+#create-pin-form>* {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#pin-form-image-upload {   
+  flex-basis: 45%;
+  gap: 1rem;
+  justify-content: space-between;
+  position: relative;
+}
+
+#pin-form-image-upload, #pin-form-details>input {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  border: 1px solid var(--text-color);
+  border-radius: var(--border-radius);  
+}
+
+#pin-form-image-upload img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    z-index: 1;
+    background-color: var(--bg-color);
+    visibility: hidden;
+}
+
+#pin-form-image-upload img.active {
+    visibility: visible;
+}
+
+/* pin form - image upload */
+
+#pin-form-image-upload * {
+    color: var(--text-color);
+}
+
+#pin-form-image-upload input {
+    visibility: hidden;
+}
+
+#pin-form-image-upload div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#pin-form-image-upload div .material-icons {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+#pin-form-image-upload p {
+    padding: 0;
+    margin: 0;
+}
+
+/* pin form - details */
+
+#create-pin-form > #pin-form-details {
+  flex-grow: 1;
+}
+
+#pin-form-details>* {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    justify-content: center;
+}
+
+#pin-form-details input, #pin-form-details textarea{
+    padding: 1rem;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border: 1px solid var(--text-color);
+    border-radius: var(--border-radius);
+}
+
+#pin-form-details textarea {
+    resize: vertical;
+    min-height: 6rem;
+    max-height: 24rem;
+}
+
+#pin-form-details fieldset {
+    border: 1px solid var(--text-color);
+    border-radius: var(--border-radius);
+    padding: 0;
+    display: flex;
+    gap: 0;
+    position: relative;
+}
+
+#pin-form-details fieldset legend {
+    padding: 0 0.5rem;
+    position: absolute;
+    top: -1.7rem;
+    left: -0.6rem;
+    background-color: var(--bg-color);
+    font-size: 1rem;
+}
+
+#pin-form-details fieldset div {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    gap: 0;
+}
+
+#pin-form-details fieldset label {
+    visibility: hidden;
+    position: absolute;
+}
+
+#pin-form-details fieldset input {
+  appearance: none;
+  flex-grow: 1;
+  border-radius: 0;
+  border: 0;
+  outline:invert;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  margin: 0;
+  transition: var(--default-transition);
+}
+
+#pin-form-details fieldset input:last-of-type {
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+#pin-form-details fieldset input:first-of-type {
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+
+#pin-form-details fieldset input:checked {
+    outline: 0.5rem solid var(--primary-color);
+    z-index: 1;
+}
+
+#pin-form-details fieldset input:not(:checked):not(:hover) {
+    filter: brightness(0.6);
+    cursor: pointer;
+}
+
+#pin-form-details fieldset input#green {
+  background-color: var(--card-color-green);
+}
+
+#pin-form-details fieldset input#yellow {
+  background-color: var(--card-color-yellow);
+}
+
+#pin-form-details fieldset input#red {
+  background-color: var(--card-color-red);
+}
+
+#pin-form-details fieldset input#orange {
+  background-color: var(--card-color-orange);
+}
+
+#pin-form-details fieldset input#purple {
+  background-color: var(--card-color-purple);
+}
+
+#pin-form-details fieldset input#blue {
+  background-color: var(--card-color-blue);
+}
+
+#pin-form-details fieldset input#pink {
+  background-color: var(--card-color-pink);
+}
+
+#pin-form-details fieldset input#white {
+  background-color: var(--card-color-white);
+}
+
+#pin-form-details fieldset input#gray {
+  background-color: var(--card-color-gray);
+}
+
+#pin-form-details fieldset input#black {
+  background-color: var(--card-color-black);
+}
+
+#pin-form-details input:invalid {
+    border-color: red;
+}
+
+#pin-form-details label.required::after {
+    content: "*";
+    color: red;
+    margin-left: 0.2rem;
+}

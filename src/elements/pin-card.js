@@ -14,6 +14,7 @@ class PinCard extends HTMLElement {
         }
         if (this.hasAttribute('image')) {
             newElement.querySelector('img').src = this.getAttribute('image');
+            newElement.querySelector('img').alt = this.getAttribute('title') || 'Pin image';
         } else {
             newElement.removeChild(newElement.querySelector('img'));
         }

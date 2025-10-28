@@ -14,20 +14,24 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/index.css">
 
-    <!-- Main JavaScript (Defer Loading) -->
-    <script src="index.js" defer></script>
+    <!-- Main JavaScript (ES Module) -->
+    <script type="module" src="index.js" defer></script>
 </head>
 <body>
-    <div>
+    <div class="container">
         <header>
-    
+            <input id="search-input" type="search" spellcheck="false" autocapitalize="false" placeholder="Search pins...">
+            <button id="search-button" class="icon-button">
+                <span class="material-icons search-icon">search</span>
+                <span class="material-icons close-icon">close</span>
+            </button>
         </header>
         <main>
             <!-- Add the class "active" to the section to display it -->
 
             <!------------------------------------------------------------------------------------------------------------>
             
-            <section id="home-section">
+            <section id="pins-section">
                 <h1>Pinboard</h1>
                 <ol class="masonry-list">
                     <!-- Pins will be dynamically added here -->
@@ -38,7 +42,7 @@
                 <li class="masonry-pin">
                     <a href="#">
                         <span class="material-icons">link</span>
-                        <img src="https://placecats.com/200/300">
+                        <img src="https://placecats.com/200/300" alt="Pin image">
                         <h3 class="masonry-pin-title"></h3>
                         <p class="masonry-pin-description"></p>
                         <p class="date"></p>
@@ -49,48 +53,62 @@
             <!------------------------------------------------------------------------------------------------------------>
 
             <section id="create-section">
+                <h2>Create New Pin</h2>
                 <form id="create-pin-form">
-                    <h2>Create New Pin</h2>
+                    <button id="pin-form-image-upload" type="button">
+                        <div>
+                            <span class="material-icons">upload</span>
+                            <label for="pin-image" class="placeholder">Choose an image to upload</label>
+                        </div>
+                        <input type="file" id="pin-image" name="pin-image" accept="image/*">
+                        <p>We recommend using jpg files of high quality of less than 20MB.</p>
+                        <img src="https://placecats.com/200/300" alt="Uploaded image preview">
+                    </button>
 
-                    <span class="material-icons upload-icon">upload</span>
-                    <label for="pin-image">Choose an image to upload</label>
-                    <input type="file" id="pin-image" name="pin-image" accept="image/*">
-                    <p>We recommend using jpg files of high quality of less than 20MB.</p>
+                    <div id="pin-form-details">
+                        <fieldset>
+                            <legend>Choose a color</legend>
+                            <div>
+                                <label for="green">Green</label>
+                                <input type="radio" id="green" name="pin-color" value="0x00FF00">
+                                <label for="yellow">Yellow</label>
+                                <input type="radio" id="yellow" name="pin-color" value="0xFFFF00">
+                                <label for="orange">Orange</label>
+                                <input type="radio" id="orange" name="pin-color" value="0xFFA500">
+                                <label for="red">Red</label>   
+                                <input type="radio" id="red" name="pin-color" value="0xFF0000">
+                                <label for="purple">Purple</label>
+                                <input type="radio" id="purple" name="pin-color" value="0x800080">
+                                <label for="blue">Blue</label>
+                                <input type="radio" id="blue" name="pin-color" value="0x0000FF">
+                                <label for="pink">Pink</label>
+                                <input type="radio" id="pink" name="pin-color" value="0xFFC0CB">
+                                <label for="white">White</label>
+                                <input type="radio" id="white" name="pin-color" value="0xFFFFFF" checked>  
+                                <label for="gray">Gray</label>
+                                <input type="radio" id="gray" name="pin-color" value="0x808080">
+                                <label for="black">Black</label>
+                                <input type="radio" id="black" name="pin-color" value="0x000000">
+                            </div>
+                        </fieldset>
 
-                    <fieldset>
-                        <legend>Choose a color:</legend>
-                        <label for="green">Green</label>
-                        <input type="radio" id="green" name="pin-color" value="green">
-                        <label for="yellow">Yellow</label>
-                        <input type="radio" id="yellow" name="pin-color" value="yellow">
-                        <label for="orange">Orange</label>
-                        <input type="radio" id="orange" name="pin-color" value="orange">
-                        <label for="red">Red</label>   
-                        <input type="radio" id="red" name="pin-color" value="red">
-                        <label for="purple">Purple</label>
-                        <input type="radio" id="purple" name="pin-color" value="purple">
-                        <label for="blue">Blue</label>
-                        <input type="radio" id="blue" name="pin-color" value="blue">
-                        <label for="pink">Pink</label>
-                        <input type="radio" id="pink" name="pin-color" value="pink">
-                        <label for="white">White</label>
-                        <input type="radio" id="white" name="pin-color" value="white" checked>  
-                        <label for="gray">Gray</label>
-                        <input type="radio" id="gray" name="pin-color" value="gray">
-                        <label for="black">Black</label>
-                        <input type="radio" id="black" name="pin-color" value="black">
-                    </fieldset>
+                        <div>
+                            <label for="pin-title" class="required">Title</label>
+                            <input type="text" id="pin-title" name="pin-title" placeholder="Add a title" required>
+                        </div>
 
-                    <label for="pin-title">Title:</label>
-                    <input type="text" id="pin-title" name="pin-title" placeholder="Add a title" required>
+                        <div>
+                            <label for="pin-description">Description</label>
+                            <textarea id="pin-description" name="pin-description" placeholder="Add a detail description"></textarea>
+                        </div>
 
-                    <label for="pin-description">Description:</label>
-                    <textarea id="pin-description" name="pin-description" placeholder="Add a detail description"></textarea>
+                        <div>
+                            <label for="pin-link">Link</label>
+                            <input type="url" id="pin-link" name="pin-link" placeholder="Add a link">
+                        </div>
 
-                    <label for="pin-link">Link:</label>
-                    <input type="url" id="pin-link" name="pin-link" placeholder="Add a link">
-
-                    <button type="submit">Create Pin</button>
+                        <button class="primary" type="submit">Create Pin</button>
+                    </div>
                 </form>
             </section>
 
@@ -98,7 +116,7 @@
 
             <section id="pin-section">
                 <span class="material-icons">arrow_back</span>
-                <img id="pin-image" src="https://placecats.com/400/600">
+                <img id="pin-image" src="https://placecats.com/400/600" alt="Pin image">
                 <h2 id="pin-title">Pin Title</h2>
                 <a href="#" id="pin-link">Visit Link</a>
                 <p id="pin-description">Pin Description</p>
@@ -108,11 +126,11 @@
                     <span class="material-icons">download</span>
                 </div>
                 <aside>
-                    <button id="copy-pin-button">
+                    <button id="copy-pin-button" class="icon-button">
                         <span class="material-icons">content_copy</span>
                         <span>Copy</span>
                     </button>
-                    <button id="more-options-button">
+                    <button id="more-options-button" class="icon-button">
                         <span class="material-icons">more_horiz</span>
                         <span>More</span>
                     </button>
@@ -138,6 +156,7 @@
                             <span class="material-icons">delete</span>
                             <span>Delete</span>
                         </button>
+                    </div>
                 </aside>
             </section>
 
@@ -145,13 +164,13 @@
         </main>
     </div>
     <nav>
-        <a href="#home-section">
+        <a href="#home">
             <span class="material-icons">home</span>
             <span>Home</span>
         </a>
-        <a href="#create-section">
+        <a href="#create">
             <span class="material-icons">add_circle</span>
-            <span>New pin</span>
+            <span>Create</span>
         </a>
     </nav>
 </body>
