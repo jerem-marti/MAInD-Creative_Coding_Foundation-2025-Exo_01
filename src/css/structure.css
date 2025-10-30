@@ -38,27 +38,44 @@ nav {
 }
 
 nav a {
-  color: var(--secondary-color);
   text-decoration: none;
   padding: 0.5rem;
   border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: var(--default-transition);
 }
 
 nav a * {
-  transition: color var(--default-transition);
   text-align: center;
+  transition: var(--default-transition);
 }   
 
-nav a:hover *, 
-nav a.active * {
-  background: var(--primary-color);
+nav a:hover {
+  background-color: var(--primary-color-dark);
 }
 
 nav a .material-icons {
   font-size: 2.5rem;
+  display: none;
+}
+
+nav a.active span:last-child{
+  font-weight: bold;
+}
+
+nav a.active .material-icons {
+  font-size: 2.5rem;
+  display: inline;
+}
+
+nav a .material-icons-outlined {
+  font-size: 2.5rem;
+}
+
+nav a.active .material-icons-outlined {
+  display: none;
 }
 
 /********************************************************************************/
