@@ -42,11 +42,6 @@ const newPinForm = () => {
         }).then((newPin) => {
             textDialog('Pin created successfully!', 2000, 'success');
             resetForm();
-            console.log('New pin created:', newPin);
-            // get the new pin and console log it
-            getPin(newPin).then((pin) => {
-                console.log('Retrieved new pin:', pin);
-            });
         }).catch((error) => {
             textDialog('Error creating pin.', 4000, 'error');
             console.error('Error creating pin:', error);
@@ -105,11 +100,6 @@ imageInput.addEventListener('change', () => {
         imagePreview.src = URL.createObjectURL(file);
         imagePreview.classList.add('active');
     }
-});
-
-// Add listener for image preview click to trigger file input
-imagePreview.addEventListener('click', () => {
-    imageInput.click();
 });
 
 // Add listener to image input button to trigger file input

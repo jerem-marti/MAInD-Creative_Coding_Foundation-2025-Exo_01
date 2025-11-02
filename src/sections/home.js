@@ -24,7 +24,6 @@ const displayPins = (pins) => {
 
 const displayAllPins = () => {
     getAllPins().then(pins => {
-        console.log('Displaying all pins:', pins);
         displayPins(pins);
     });
 };
