@@ -42,20 +42,20 @@ class PinCard extends HTMLElement {
         };
 
         // Populate the new element with the mandatory fields
-        newElement.querySelector('.masonry-pin-id').textContent = pinData.id;
+        newElement.querySelector('.masonry-pin-link').href = `#pins-${pinData.id}`;
         newElement.querySelector('.masonry-pin-title').textContent = pinData.title;
         const createdAt = new Date(pinData.createdAt);
         newElement.querySelector('.masonry-pin-created-at').textContent = `Created: ${createdAt.toLocaleDateString()} ${createdAt.toLocaleTimeString()}`;
 
         // Populate the new element with the optional fields
         if(!pinData.link) {
-            newElement.querySelector('a span').remove();
+            newElement.querySelector('.masonry-pin-link-icon').remove();
         } 
         if (pinData.image) {
-            newElement.querySelector('img').src = pinData.image;
-            newElement.querySelector('img').alt = pinData.title;
+            newElement.querySelector('.masonry-pin-image').src = pinData.image;
+            newElement.querySelector('.masonry-pin-image').alt = pinData.title;
         } else {
-            newElement.querySelector('img').remove();
+            newElement.querySelector('.masonry-pin-image').remove();
         }
         if (pinData.color) {
             // `newElement` is a DocumentFragment (from template.content.cloneNode(true)).
@@ -66,11 +66,6 @@ class PinCard extends HTMLElement {
             newElement.querySelector('.masonry-pin-description').textContent = pinData.description;
         } else {
             newElement.querySelector('.masonry-pin-description').remove();
-        }
-        if (pinData.link) {
-            newElement.querySelector('.masonry-pin-link').href = pinData.link;
-        } else {
-            newElement.querySelector('.masonry-pin-link').remove();
         }
         if (!pinData.updatedAt) {
             newElement.querySelector('.masonry-pin-updated-at').remove();
