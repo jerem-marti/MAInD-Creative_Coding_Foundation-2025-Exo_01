@@ -82,7 +82,7 @@ class PinCard extends HTMLElement {
         // Add event listener to the delete button to delete the pin
         fragment.querySelector('.masonry-pin-delete-button')?.addEventListener('click', (e) => {
             e.preventDefault();
-            this.delete();
+            this.delete(newPinElement);
         });
 
         // Replace this custom element with the new populated element
@@ -145,26 +145,17 @@ class PinCard extends HTMLElement {
         }
     }
 
-    delete() {
+    delete(pinElement) {
         const pinId = this.getAttribute('id') ? parseInt(this.getAttribute('id')) : null;
         if (pinId) {
-
-            confirmDialog('Are you sure you want to delete this pin? This is irreversible!', 'Delete', 'Keep')
-        } else {
-            moreOptionsElement.classList.add('hidden');
-        }
-    }
-
-    delete() {
-        const pinId = this.getAttribute('id') ? parseInt(this.getAttribute('id')) : null;
-        if (pinId) {
-
             confirmDialog('Are you sure you want to delete this pin? This is irreversible!', 'Delete', 'Keep')
             .then((confirmed) => {
                 if (confirmed) {
                     deletePin(pinId)
                     .then(() => {
                         textDialog('Pin deleted successfully!', 2000, 'success');
+                        // Remove the pin element from the DOM
+                        pinElement.remove();
                     })
                     .catch((error) => {
                         textDialog('Error deleting pin from database.', 4000, 'error');
