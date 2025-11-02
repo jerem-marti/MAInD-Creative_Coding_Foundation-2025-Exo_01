@@ -2,7 +2,8 @@ import './elements/pin-card.js';
 
 import {displaySection, activateLink} from './helpers.js';
 
-// future sections imports go here
+import {displayAllPins, displaySearchedPins} from './sections/home.js';
+import {displayForm} from './sections/create.js';
 
 const router = () => {
     
@@ -13,19 +14,20 @@ const router = () => {
     switch(hashs[0]) {
         case '#home':
             displaySection('pins');
-            // future pins list display code goes here
+            displayAllPins();
             break;
         case '#create':
             displaySection('create');
-            break;
-        case '#edit':
-            displaySection('create');
-            // future pin edit display code goes here
+            if(hashs[1]){
+                displayForm(parseInt(hashs[1]));
+            } else {
+                displayForm();
+            }
             break;
         case '#pins':
             if(hashs[1]){
                 displaySection(`pin`);
-                // future pin detail display code goes here
+                // future single pin display code goes here
             } else {
                 window.location.hash = '#home';
                 displaySection('pins');
@@ -33,7 +35,12 @@ const router = () => {
             break;
         case '#search':
             displaySection('pins');
-            // future search display code goes here
+            if(hashs[1]){
+                displaySearchedPins(decodeURIComponent(hashs[1]));
+            } else {
+                window.location.hash = '#home';
+                displaySection('pins');
+            }
             break;
         // future sections cases go here
         default:

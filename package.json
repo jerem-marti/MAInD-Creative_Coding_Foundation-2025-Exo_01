@@ -5,8 +5,10 @@
   "private": true,
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel --no-cache",
-    "build": "parcel build"
+  "start": "parcel --no-cache",
+  "build": "parcel build --public-url ./",
+  "clean": "rm -rf .parcel-cache dist",
+  "serve": "npx serve -s dist"
   },
   "keywords": [],
   "author": "Jeremy Martin",

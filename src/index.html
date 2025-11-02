@@ -33,20 +33,30 @@
             
             <section id="pins-section">
                 <h1>Pinboard</h1>
-                <ol class="masonry-list">
+                <ol id="masonry-list">
                     <!-- Pins will be dynamically added here -->
                 </ol>
             </section>
 
             <template id="pin-template">
                 <li class="masonry-pin">
-                    <a href="#">
+                    <a class="masonry-pin-link" href="#">
+                        <span class="masonry-pin-id"></span>
                         <span class="material-icons">link</span>
                         <img src="https://placecats.com/200/300" alt="Pin image">
                         <h3 class="masonry-pin-title"></h3>
                         <p class="masonry-pin-description"></p>
-                        <p class="date"></p>
                     </a>
+                    <footer>
+                        <span class="masonry-pin-created-at"></span>
+                        <span class="masonry-pin-updated-at"></span>
+                        <button class="masonry-pin-copy-button icon-button" type="button">
+                            <span class="material-icons">content_copy</span>
+                        </button>
+                        <button class="masonry-pin-more-button icon-button" type="button">
+                            <span class="material-icons">more_horiz</span>
+                        </button>
+                    </footer>
                 </li>
             </template>
 
@@ -62,7 +72,7 @@
                         </div>
                         <input type="file" id="pin-image" name="pin-image" accept="image/*">
                         <p>We recommend using jpg files of high quality of less than 20MB.</p>
-                        <img src="https://placecats.com/200/300" alt="Uploaded image preview">
+                        <img id="image-preview" src="https://placecats.com/200/300" alt="Uploaded image preview">
                     </button>
 
                     <div id="pin-form-details">
@@ -70,25 +80,25 @@
                             <legend>Choose a color</legend>
                             <div>
                                 <label for="green">Green</label>
-                                <input type="radio" id="green" name="pin-color" value="0x00FF00">
+                                <input type="radio" id="green" name="pin-color" value="green">
                                 <label for="yellow">Yellow</label>
-                                <input type="radio" id="yellow" name="pin-color" value="0xFFFF00">
+                                <input type="radio" id="yellow" name="pin-color" value="yellow">
                                 <label for="orange">Orange</label>
-                                <input type="radio" id="orange" name="pin-color" value="0xFFA500">
+                                <input type="radio" id="orange" name="pin-color" value="orange">
                                 <label for="red">Red</label>   
-                                <input type="radio" id="red" name="pin-color" value="0xFF0000">
+                                <input type="radio" id="red" name="pin-color" value="red">
                                 <label for="purple">Purple</label>
-                                <input type="radio" id="purple" name="pin-color" value="0x800080">
+                                <input type="radio" id="purple" name="pin-color" value="purple">
                                 <label for="blue">Blue</label>
-                                <input type="radio" id="blue" name="pin-color" value="0x0000FF">
+                                <input type="radio" id="blue" name="pin-color" value="blue">
                                 <label for="pink">Pink</label>
-                                <input type="radio" id="pink" name="pin-color" value="0xFFC0CB">
+                                <input type="radio" id="pink" name="pin-color" value="pink">
                                 <label for="white">White</label>
-                                <input type="radio" id="white" name="pin-color" value="0xFFFFFF" checked>  
+                                <input type="radio" id="white" name="pin-color" value="white" checked>  
                                 <label for="gray">Gray</label>
-                                <input type="radio" id="gray" name="pin-color" value="0x808080">
+                                <input type="radio" id="gray" name="pin-color" value="gray">
                                 <label for="black">Black</label>
-                                <input type="radio" id="black" name="pin-color" value="0x000000">
+                                <input type="radio" id="black" name="pin-color" value="black">
                             </div>
                         </fieldset>
 
@@ -107,7 +117,7 @@
                             <input type="url" id="pin-link" name="pin-link" placeholder="Add a link">
                         </div>
 
-                        <button class="primary" type="submit">Create Pin</button>
+                        <button id="pin-form-submit-btn" class="primary" type="button">Create Pin</button>
                     </div>
                 </form>
             </section>
@@ -161,7 +171,9 @@
             </section>
 
             <!------------------------------------------------------------------------------------------------------------>
+
         </main>
+        <dialog class="">Dialog</dialog>
     </div>
     <nav>
         <a href="#home">

@@ -6,15 +6,9 @@ const displaySection = (id) => {
     // Try to show the section corresponding to the given id 
     document.querySelector(`#${id}-section`)?.classList.add('active');
 
-    if(id === 'create') {
+    if(id !== 'home' && id !== 'pins') {
         // Hide the search bar when displaying the create section
         document.querySelector('header').classList.add('no-search-bar');
-        // Reset the create pin form
-        const createPinForm = document.querySelector('#create-pin-form');
-        createPinForm.reset();
-        // Reset the image preview
-        const imagePreview = createPinForm.querySelector('img');
-        imagePreview.src = '';
     } else {
         // Show the search bar for other sections
         document.querySelector('header').classList.remove('no-search-bar');
@@ -55,4 +49,19 @@ searchButton.addEventListener('click', () => {
     }
 });
 
-export {displaySection, activateLink};
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Dialog helper functions
+
+const dialog = document.querySelector('dialog');
+
+const showDialog = (message, duration = 2000, type = 'neutral') => {
+    dialog.textContent = message;
+    dialog.className = type;
+    dialog.showModal();
+
+    setTimeout(() => {
+        dialog.close();
+    }, duration);
+};
+
+export {displaySection, activateLink, showDialog};
