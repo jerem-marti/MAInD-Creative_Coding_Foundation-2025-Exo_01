@@ -1,6 +1,6 @@
 import { getPin } from "../indexed-db";
 import { addPin, updatePin } from "../indexed-db";
-import { showDialog } from "../helpers";
+import { textDialog } from "../helpers";
 
 // Form
 const form = document.getElementById('create-pin-form');
@@ -39,7 +39,7 @@ const newPinForm = () => {
             description: descriptionInput.value,
             link: linkInput.value
         }).then((newPin) => {
-            showDialog('Pin created successfully!', 2000, 'success');
+            textDialog('Pin created successfully!', 2000, 'success');
             form.reset();
             console.log('New pin created:', newPin);
             // get the new pin and console log it
@@ -47,7 +47,7 @@ const newPinForm = () => {
                 console.log('Retrieved new pin:', pin);
             });
         }).catch((error) => {
-            showDialog('Error creating pin.', 4000, 'error');
+            textDialog('Error creating pin.', 4000, 'error');
             console.error('Error creating pin:', error);
         });
     };
@@ -77,14 +77,14 @@ const updatePinForm = (pinId) => {
                 pinData.image = imageInput.value;
                 pinData.link = linkInput.value;
                 updatePin(pinData).then(() => {
-                    showDialog('Pin updated successfully!', 2000, 'success');
+                    textDialog('Pin updated successfully!', 2000, 'success');
                 }).catch((error) => {
-                    showDialog('Error updating pin.', 4000, 'error');
+                    textDialog('Error updating pin.', 4000, 'error');
                     console.error('Error updating pin:', error);
                 });
             };
     }).catch((error) => {
-        showDialog('Error fetching pin data for editing.', 4000, 'error');
+        textDialog('Error fetching pin data for editing.', 4000, 'error');
         console.error('Error fetching pin data:', error);
         window.location.hash = '#create';
         displayForm();
