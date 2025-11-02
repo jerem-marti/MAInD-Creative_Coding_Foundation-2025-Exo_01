@@ -46,7 +46,6 @@ class PinCard extends HTMLElement {
         } 
         if (pinData.image) {
             fragment.querySelector('.masonry-pin-image').src = pinData.image;
-            fragment.querySelector('.masonry-pin-image').alt = pinData.title;
         } else {
             fragment.querySelector('.masonry-pin-image').remove();
         }

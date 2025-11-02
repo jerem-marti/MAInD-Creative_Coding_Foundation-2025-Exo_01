@@ -1,13 +1,16 @@
 /********************************************************************************/
 /* buttons */
 
+button {
+    cursor: pointer;
+}
+
 button.primary {
     padding: 1rem;
     background-color: var(--primary-color);
     color: var(--text-color);
     border: none;
     border-radius: var(--border-radius);
-    cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
     transition: background-color var(--default-transition), color var(--default-transition);
@@ -24,7 +27,6 @@ button.icon-button {
   border: none;
   background-color: transparent;
   line-height: 0;
-  cursor: pointer;
 }
 
 button.icon-button .material-icons {

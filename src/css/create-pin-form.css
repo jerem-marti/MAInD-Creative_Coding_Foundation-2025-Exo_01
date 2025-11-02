@@ -30,7 +30,7 @@
   border-radius: var(--border-radius);  
 }
 
-#pin-form-image-upload img {
+#pin-form-image-upload #image-preview {
     width: 100%;
     border-radius: var(--border-radius);
     height: 100%;
@@ -44,7 +44,7 @@
     visibility: hidden;
 }
 
-#pin-form-image-upload img.active {
+#pin-form-image-upload #image-preview.active {
     visibility: visible;
 }
 
@@ -146,6 +146,7 @@
   padding: 0;
   margin: 0;
   transition: var(--default-transition);
+  cursor: pointer;
 }
 
 #pin-form-details fieldset input:last-of-type {

@@ -1,6 +1,6 @@
 import { getPin } from "../indexed-db";
 import { addPin, updatePin } from "../indexed-db";
-import { textDialog } from "../helpers";
+import { textDialog, blobToBase64 } from "../helpers";
 
 // Form
 const form = document.getElementById('create-pin-form');
@@ -19,8 +19,8 @@ const dialog = document.querySelector('dialog');
 
 const displayForm = (pinId = null) => {
 
-    //reset form fields
-    form.reset();
+    //reset form
+    resetForm();
 
     if (pinId) {
         updatePinForm(pinId);
@@ -32,15 +32,16 @@ const displayForm = (pinId = null) => {
 const newPinForm = () => {
     submitButton.textContent = 'Create Pin';
     submitButton.onclick = () => {
+        const file = imageInput.files[0] || null;
         addPin({
             color: colorInput.value,
-            image: imageInput.value,
+            image: file,
             title: titleInput.value,
             description: descriptionInput.value,
             link: linkInput.value
         }).then((newPin) => {
             textDialog('Pin created successfully!', 2000, 'success');
-            form.reset();
+            resetForm();
             console.log('New pin created:', newPin);
             // get the new pin and console log it
             getPin(newPin).then((pin) => {
@@ -61,20 +62,20 @@ const updatePinForm = (pinId) => {
             colorInput.value = pinData.color || '';
             titleInput.value = pinData.title || '';
             descriptionInput.value = pinData.description || '';
-            // TO CHECK IF NEED TO CHANGE BETWEEN BLOB AND URL ---------------------------------------------------------------
-            imageInput.value = pinData.image || '';
             if (pinData.image) {
-                imagePreview.src = pinData.image;
+                imagePreview.src = URL.createObjectURL(pinData.image);
+                imagePreview.classList.add('active');
             }
             linkInput.value = pinData.link || '';
 
             // Set the submit button to update mode
             submitButton.textContent = 'Update Pin';
             submitButton.onclick = () => {
+                const file = imageInput.files[0] || pinData.image || null;
                 pinData.color = colorInput.value;
                 pinData.title = titleInput.value;
                 pinData.description = descriptionInput.value;
-                pinData.image = imageInput.value;
+                pinData.image = file;
                 pinData.link = linkInput.value;
                 updatePin(pinData).then(() => {
                     textDialog('Pin updated successfully!', 2000, 'success');
@@ -90,5 +91,32 @@ const updatePinForm = (pinId) => {
         displayForm();
     });
 };
+
+const resetForm = () => {
+    form.reset();
+    imagePreview.src = '';
+    imagePreview.classList.remove('active');
+};
+
+// Add listener for image input change
+imageInput.addEventListener('change', () => {
+    const file = imageInput.files[0];
+    if (file) {
+        imagePreview.src = URL.createObjectURL(file);
+        imagePreview.classList.add('active');
+    }
+});
+
+// Add listener for image preview click to trigger file input
+imagePreview.addEventListener('click', () => {
+    imageInput.click();
+});
+
+// Add listener to image input button to trigger file input
+document.getElementById('pin-form-image-upload').addEventListener('click', () => {
+    imageInput.click();
+});
+
+
 
 export { displayForm };

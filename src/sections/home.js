@@ -13,9 +13,9 @@ const displayPins = (pins) => {
         pinElement.setAttribute('id', pin.id);
         pinElement.setAttribute('color', pin.color);
         pinElement.setAttribute('title', pin.title);
-        pinElement.setAttribute('description', pin.description);
-        pinElement.setAttribute('image', pin.image);
-        pinElement.setAttribute('link', pin.link);
+        if(pin.description) pinElement.setAttribute('description', pin.description);
+        if(pin.image) pinElement.setAttribute('image', URL.createObjectURL(pin.image));
+        if(pin.link) pinElement.setAttribute('link', pin.link);
         pinElement.setAttribute('created-at', pin.createdAt);
         pinElement.setAttribute('updated-at', pin.updatedAt);
         pinsContainer.appendChild(pinElement);
