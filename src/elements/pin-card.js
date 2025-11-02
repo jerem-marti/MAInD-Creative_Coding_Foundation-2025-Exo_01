@@ -1,4 +1,4 @@
-import { deletePin } from '../indexed-db';
+import { deletePin, getPin } from '../indexed-db';
 import { textDialog, confirmDialog } from '../helpers';
 
 // Define custom events
@@ -103,21 +103,64 @@ class PinCard extends HTMLElement {
 
     copyToClipboard() {
         const pinData = this.getData();
-        navigator.clipboard.writeText(`
-            Title: ${pinData.title}\n
-            Description: ${pinData.description}\n
-            Link: ${pinData.link}\n
-            Image: ${pinData.image}\n
-            Created At: ${pinData.createdAt}\n
-            Updated At: ${pinData.updatedAt}`
-        ).then(() => {
-            textDialog('Pin data copied to clipboard!', 2000, 'success');
-        }).catch((error) => {
-            textDialog('Error copying pin data.', 4000, 'error');
-            console.error('Error copying pin data:', error);
+        let text = '';
+        text += `Title: ${pinData.title}\n`;
+        if (pinData.description) text += `Description: ${pinData.description}\n`;
+        if (pinData.link) text += `Link: ${pinData.link}\n`;
+
+        if (pinData.image) {
+            getPin(pinData.id).then((pin) => {
+            if (pin.image && ClipboardItem.supports(pin.image.type)) {
+                navigator.clipboard.write([
+                    new ClipboardItem({
+                        "text/plain": text,
+                        [pin.image.type]: pin.image
+                    })
+                ]).then(() => {
+                    textDialog('Pin data copied to clipboard!', 2000, 'success');
+                });
+            } else {
+                navigator.clipboard.writeText(text)
+                .then(() => {
+                    textDialog('Only pin text data could be copied to clipboard! The image format is not supported.', 2000, 'warning');
+                });
+            }
         });
+        } else {
+            navigator.clipboard.writeText(text)
+            .then(() => {
+                textDialog('Pin data copied to clipboard!', 2000, 'success');
+            });
+        }
     }
 
+        // async function writeClipImg() {
+        //     try {
+        //         if (ClipboardItem.supports("image/svg+xml")) {
+        //         const imgURL = "/my-image.svg";
+        //         const data = await fetch(imgURL);
+        //         const blob = await data.blob();
+        //         await navigator.clipboard.write([
+        //             new ClipboardItem({
+        //             [blob.type]: blob,
+        //             }),
+        //         ]);
+        //         console.log("Fetched image copied.");
+        //         } else {
+        //         console.log("SVG images are not supported by the clipboard.");
+        //         }
+        //     } catch (err) {
+        //         console.error(err.name, err.message);
+        //     }
+        //     }
+
+        // navigator.clipboard.writeText(text).then(() => {
+        //     textDialog('Pin data copied to clipboard!', 2000, 'success');
+        // }).catch((error) => {
+        //     textDialog('Error copying pin data.', 4000, 'error');
+        //     console.error('Error copying pin data:', error);
+        // });
+    
     toggleMoreOptions(pinElement) {
         const moreOptionsElement = pinElement.querySelector('.masonry-pin-more-options');
         if (!moreOptionsElement) {

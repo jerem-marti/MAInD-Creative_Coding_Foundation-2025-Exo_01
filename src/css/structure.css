@@ -197,10 +197,14 @@ dialog::backdrop {
 }
 
 dialog.error {
-  background-color: lightcoral;
+  background-color: red;
 }
 
 dialog.success {
-  background-color: lightgreen;
+  background-color: green;
+}
+
+dialog.warning {
+  background-color: orange;
 }
 

@@ -1,6 +1,6 @@
 import { getPin } from "../indexed-db";
 import { addPin, updatePin } from "../indexed-db";
-import { textDialog, blobToBase64 } from "../helpers";
+import { textDialog } from "../helpers";
 
 // Form
 const form = document.getElementById('create-pin-form');
