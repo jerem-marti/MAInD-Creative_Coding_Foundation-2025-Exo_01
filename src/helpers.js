@@ -5,14 +5,6 @@ const displaySection = (id) => {
 
     // Try to show the section corresponding to the given id 
     document.querySelector(`#${id}-section`)?.classList.add('active');
-
-    if(id !== 'home' && id !== 'pins') {
-        // Hide the search bar when displaying the create section
-        document.querySelector('header').classList.add('no-search-bar');
-    } else {
-        // Show the search bar for other sections
-        document.querySelector('header').classList.remove('no-search-bar');
-    }
 };
 
 // Hide the active nav link and show the link coresponding to the given id
@@ -69,6 +61,7 @@ const confirmDialog = (question, primaryBtnText, secondaryBtnText, reverse = fal
 
         // Clear previous dialog content
         const dialog = document.querySelector('dialog');
+        dialog.className = 'confirm';
         dialog.innerHTML = `
             <span class="material-icons dialog-icon">help_outline</span>
             <h2>Confirmation</h2>

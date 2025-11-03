@@ -3,7 +3,7 @@ import './elements/pin-card.js';
 import {displaySection, activateLink} from './helpers.js';
 
 import {displayAllPins, displaySearchedPins} from './sections/home.js';
-import {displayForm} from './sections/create.js';
+import {displayForm, isLeavingFormUnsaved} from './sections/create.js';
 
 const router = () => {
     
@@ -51,7 +51,13 @@ const router = () => {
 };
 
 // Listen to hash changes to implement the router
-window.addEventListener('hashchange', router);
+window.addEventListener('hashchange', (event) => {
+    isLeavingFormUnsaved().then((hasUnsavedChanges) => {
+        if (!hasUnsavedChanges) {
+            router();
+        }
+    });
+});
 
 // Call the router once
 router();

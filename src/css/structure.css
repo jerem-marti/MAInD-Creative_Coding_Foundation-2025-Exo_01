@@ -137,8 +137,12 @@ header #search-button.active .close-icon {
     display: inline;
 }
 
-header.no-search-bar #search-input, header.no-search-bar #search-button {
+header #search-input, header #search-button {
     visibility: hidden;
+}
+
+body:has(#pins-section.active) header #search-button, body:has(#pins-section.active) header #search-input {
+    visibility: visible;
 }
 
 /********************************************************************************/
