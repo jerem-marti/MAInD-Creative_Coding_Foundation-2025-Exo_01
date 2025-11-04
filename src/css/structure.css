@@ -111,14 +111,16 @@ header #search-input::-webkit-search-results-decoration { display: none; }
 
 header #search-button {
   position: absolute;
-  right: calc(var(--border-radius) + 2rem);
-  bottom: calc(var(--border-radius) + 2rem);
+  /* right: calc(var(--border-radius) + 2rem); */
+  right: max(calc((100% - 1440px)/2 + var(--border-radius)), calc(var(--border-radius) + 2rem));
+  bottom: calc(var(--border-radius)/2 + 2rem);
   cursor: pointer;
   font-size: 3rem;
 }
 
 header .material-icons {    
   color: var(--secondary-color);
+  font-size: 2rem;
 }
 
 header #search-button .close-icon {
