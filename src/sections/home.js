@@ -2,6 +2,7 @@ import { getAllPins, textSearchPins } from "../indexed-db";
 
 // Elements
 const pinsContainer = document.getElementById('masonry-list');
+const searchInput = document.getElementById('search-input');
 
 const displayPins = (pins) => {
     // Clear existing pins
@@ -23,6 +24,7 @@ const displayPins = (pins) => {
 };
 
 const displayAllPins = () => {
+    searchInput.value = '';
     getAllPins().then(pins => {
         displayPins(pins);
     });
