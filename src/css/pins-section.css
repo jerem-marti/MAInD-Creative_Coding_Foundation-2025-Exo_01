@@ -1,0 +1,197 @@
+/* --------------------------------------------------------------------------------- */
+/* Pin structure */
+
+h1 {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin-right: -1px;
+    margin-top: -1px;
+}
+
+#masonry-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    grid-auto-flow: row dense;
+    padding: 1rem;
+    grid-template-rows: masonry;
+}
+
+.masonry-pin {
+    width: 100%;
+    height: auto;
+    grid-row: auto / span 1;
+    border-radius: var(--border-radius);
+    outline: 0.05rem solid var(--grey-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.masonry-pin:hover {
+    outline: 0.2rem solid var(--grey-light);
+}
+
+.masonry-pin-link {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.2rem;
+    position: relative;
+}
+
+.masonry-pin-link *:not(.masonry-pin-image) {
+    padding: 0 0.8rem;
+}
+
+.masonry-pin-title {
+    color: inherit;
+    margin: var(--border-radius) 0;
+    max-height: calc(var(--text-size-h3) * var(--line-height) * 3);
+    overflow: hidden;
+    display: -webkit-box; /* Specify that we want to use webkit-box */
+    -webkit-box-orient: vertical; /* Indicate the text direction */
+    -webkit-line-clamp: 3; /* Set the desired number of lines */
+}
+
+.masonry-pin-description {
+    color: inherit;
+    max-height: calc(var(--font-size) * var(--line-height) * 10);
+    overflow: hidden;
+    display: -webkit-box; /* Specify that we want to use webkit-box */
+    -webkit-box-orient: vertical; /* Indicate the text direction */
+    -webkit-line-clamp: 10; /* Set the desired number of lines */
+}
+
+.masonry-pin-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--border-radius);
+    object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------------- */
+/* Pin link icon */
+#masonry-list .masonry-pin-link-icon {
+    color: var(--text-color);
+    padding: 0.2rem 0.2rem 0 0;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(45deg, transparent 0 50%, var(--primary-color) 50% 100%);
+    height: 3rem;
+    width: 3rem;
+    text-align: right;
+    border-radius: 0 var(--border-radius) 0 0;
+    
+}
+
+/* --------------------------------------------------------------------------------- */
+/* Pin footer */
+.masonry-pin-footer {
+    color: inherit;
+    width: calc(100% - 2rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.masonry-pin-date {
+    color: inherit;
+    font-size: var(--text-size-footnote);
+}
+
+.masonry-pin-actions {
+    color: inherit;
+    display: flex;
+    gap: 0.5rem;
+}
+
+#masonry-list .masonry-pin-actions>* {
+    color: inherit;
+    padding: 0;
+    border-radius: var(--border-radius);
+}
+
+.masonry-pin-actions .material-icons {
+    color: inherit;
+    font-size: 1.5rem;
+    padding: 0;
+}
+
+.masonry-pin-more-options.hidden {
+    display: none;
+}
+
+.masonry-pin-more-options {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    outline: 0.2rem solid var(--bg-color);
+    color: var(--bg-color);
+    position: absolute;
+    right: 0.2rem;
+    top: 0.2rem;
+    transform: translate(0, -100%);
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.masonry-pin-more-options>* {
+    cursor: pointer;
+    padding: 0.8rem;
+    transition: var(--default-transition);
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    border-bottom: 0.05rem solid var(--text-color);
+    text-decoration: none;
+}
+
+.masonry-pin-more-options>*:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.masonry-pin-more-options>:first-child {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.masonry-pin-more-options>:last-child {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    border: none;
+}
+
+/* --------------------------------------------------------------------------------- */
+/* Pin define grid area */
+
+.masonry-pin:has(.masonry-pin-title):not(:has(.masonry-pin-image), :has(.masonry-pin-description)) {
+    grid-row: auto / span 10;
+}
+
+.masonry-pin:has(.masonry-pin-image):not(:has(.masonry-pin-description)) {
+    grid-row: auto / span 20;
+}
+
+.masonry-pin:has(.masonry-pin-description):not(:has(.masonry-pin-image)) {
+    grid-row: auto / span 20;
+}
+
+.masonry-pin:has(.masonry-pin-image):has(.masonry-pin-description) {
+    grid-row: auto / span 40;
+}

@@ -1,8 +1,9 @@
 
 * {
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: var(--font-size);
   color: var(--text-color);
+  line-height: var(--line-height);
 }
 
 h1 {
@@ -10,28 +11,32 @@ h1 {
 }
 
 h2 {
-  font-size: 3.5rem;
+  font-size: var(--text-size-h2);
   margin-top: 0;
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: var(--text-size-h3);
 }
 
 h4 {
-  font-size: 2.5rem;
+  font-size: var(--text-size-h4);
 }
 
 h5 {
-  font-size: 2rem;
+  font-size: var(--text-size-h5);
 }
 
 h6 {
-  font-size: 1.5rem;
+  font-size: var(--text-size-h6);
 }
 
 ::placeholder, .placeholder {
-  font-size: 1.2rem;
+  font-size: var(--text-size-placeholder);
+}
+
+.footnote {
+  font-size: var(--text-size-footnote);
 }
 
 /* Vertically center icons compare to the default baseline */

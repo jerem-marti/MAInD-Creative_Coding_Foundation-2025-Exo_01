@@ -182,33 +182,4 @@ main section.active {
   background-color: var(--primary-color);
 }
 
-/********************************************************************************/
-/* dialog */
-dialog {
-  background-color: var(--text-color);
-  border: none;
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  max-width: 100dvw;
-}
-
-dialog * {
-  color: var(--bg-color);
-}
-
-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-dialog.error {
-  background-color: red;
-}
-
-dialog.success {
-  background-color: green;
-}
-
-dialog.warning {
-  background-color: orange;
-}
 

@@ -170,43 +170,43 @@
 }
 
 #pin-form-details fieldset input#green {
-  background-color: var(--card-color-green);
+  background-color: var(--card-background-color-green);
 }
 
 #pin-form-details fieldset input#yellow {
-  background-color: var(--card-color-yellow);
+  background-color: var(--card-background-color-yellow);
 }
 
 #pin-form-details fieldset input#red {
-  background-color: var(--card-color-red);
+  background-color: var(--card-background-color-red);
 }
 
 #pin-form-details fieldset input#orange {
-  background-color: var(--card-color-orange);
+  background-color: var(--card-background-color-orange);
 }
 
 #pin-form-details fieldset input#purple {
-  background-color: var(--card-color-purple);
+  background-color: var(--card-background-color-purple);
 }
 
 #pin-form-details fieldset input#blue {
-  background-color: var(--card-color-blue);
+  background-color: var(--card-background-color-blue);
 }
 
 #pin-form-details fieldset input#pink {
-  background-color: var(--card-color-pink);
+  background-color: var(--card-background-color-pink);
 }
 
 #pin-form-details fieldset input#white {
-  background-color: var(--card-color-white);
+  background-color: var(--card-background-color-white);
 }
 
 #pin-form-details fieldset input#gray {
-  background-color: var(--card-color-gray);
+  background-color: var(--card-background-color-gray);
 }
 
 #pin-form-details fieldset input#black {
-  background-color: var(--card-color-black);
+  background-color: var(--card-background-color-black);
 }
 
 #pin-form-details input:invalid {

@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Navigation helper functions
+
 // Hide the active section and show the section coresponding to the given id
 const displaySection = (id) => {
     // Hide the currently active section if any
@@ -121,4 +124,18 @@ const confirmDialog = (question, primaryBtnText, secondaryBtnText, reverse = fal
     });
 };
 
-export {displaySection, activateLink, textDialog, confirmDialog};
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Color helper functions
+
+const calcTextColor = (bgColor) => {
+    // Calculate the perceptive luminance (aka luma) - human eye favors green color
+    const r = bgColor.r;
+    const g = bgColor.g;
+    const b = bgColor.b;
+    const luma = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+    // Return a contrasting text color (black or white) based on the background color's luminance
+    return luma > 0.5 ? 'black' : 'white';
+};
+
+export {displaySection, activateLink, textDialog, confirmDialog, calcTextColor};

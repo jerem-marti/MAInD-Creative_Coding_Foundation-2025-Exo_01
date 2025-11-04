@@ -3,4 +3,8 @@
 @import 'structure.css';
 @import 'typography.css';
 @import 'buttons.css';
-@import 'create-pin-form.css'
+@import 'dialogs.css';
+@import 'create-section.css';
+@import 'pins-section.css';
+@import 'pin-section.css';
+

@@ -1,5 +1,5 @@
 import { deletePin, getPin } from '../indexed-db';
-import { textDialog, confirmDialog } from '../helpers';
+import { textDialog, confirmDialog, calcTextColor } from '../helpers';
 
 // Define custom events
 const copyToClipboard = new CustomEvent('copy-to-clipboard');
@@ -36,10 +36,15 @@ class PinCard extends HTMLElement {
         // Populate the new element with the mandatory fields
         fragment.querySelector('.masonry-pin-link').href = `#pins-${pinData.id}`;
         fragment.querySelector('.masonry-pin-title').textContent = pinData.title;
-        const createdAt = new Date(pinData.createdAt);
-        fragment.querySelector('.masonry-pin-created-at').textContent = `Created: ${createdAt.toLocaleDateString()} ${createdAt.toLocaleTimeString()}`;
+        const updatedAt = new Date(pinData.updatedAt);
+        fragment.querySelector('.masonry-pin-date').textContent += updatedAt.toLocaleDateString();
         fragment.querySelector('.masonry-pin-edit-link').href = `#create-${pinData.id}`;
-
+        
+        // `fragment` is a DocumentFragment (from template.content.cloneNode(true)).
+        // DocumentFragment does not have setAttribute / style — apply the style to the element inside it.
+        newPinElement.style.setProperty('background-color', `var(--card-background-color-${pinData.color})`);
+        newPinElement.style.setProperty('color', `var(--card-color-${pinData.color})`);
+        
         // Populate the new element with the optional fields
         if(!pinData.link) {
             fragment.querySelector('.masonry-pin-link-icon').remove();
@@ -49,21 +54,10 @@ class PinCard extends HTMLElement {
         } else {
             fragment.querySelector('.masonry-pin-image').remove();
         }
-        if (pinData.color) {
-            // `fragment` is a DocumentFragment (from template.content.cloneNode(true)).
-            // DocumentFragment does not have setAttribute / style — apply the style to the element inside it.
-            newPinElement.style.setProperty('background-color', `var(--card-color-${pinData.color})`);
-        }
         if (pinData.description) {
             fragment.querySelector('.masonry-pin-description').textContent = pinData.description;
         } else {
             fragment.querySelector('.masonry-pin-description').remove();
-        }
-        if (!pinData.updatedAt) {
-            fragment.querySelector('.masonry-pin-updated-at').remove();
-        } else {
-            const updatedAt = new Date(pinData.updatedAt);
-            fragment.querySelector('.masonry-pin-updated-at').textContent = `Updated: ${updatedAt.toLocaleDateString()} ${updatedAt.toLocaleTimeString()}`;
         }
 
         // Add event listener to the copy the content of the pin to clipboard
