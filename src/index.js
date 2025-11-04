@@ -2,7 +2,7 @@ import './elements/pin-card.js';
 
 import {displaySection, activateLink} from './helpers.js';
 
-import {displayAllPins, displaySearchedPins} from './sections/home.js';
+import {displayAllPins, displaySearchedPins} from './sections/pins.js';
 import {displayForm, isLeavingFormUnsaved} from './sections/create.js';
 
 const router = () => {
