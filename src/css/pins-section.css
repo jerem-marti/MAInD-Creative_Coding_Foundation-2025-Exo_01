@@ -18,7 +18,8 @@ h1 {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
     grid-auto-flow: row dense;
-    padding: 1rem;
+    padding: 0;
+    width: 100%;
     grid-template-rows: masonry;
 }
 
