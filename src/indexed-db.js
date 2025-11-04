@@ -163,7 +163,7 @@ export async function textSearchPins(query) {
       const cursor = event.target.result;
       if (cursor) {
           const pin = cursor.value;
-          if (pin.title.includes(query) || pin.description.includes(query)) {
+          if (pin.title.toLowerCase().includes(query.toLowerCase()) || pin.description.toLowerCase().includes(query.toLowerCase())) {
             pins.push(pin);
           }
           cursor.continue();
