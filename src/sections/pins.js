@@ -31,6 +31,7 @@ const displayAllPins = () => {
 };
 
 const displaySearchedPins = (query) => {
+    searchInput.value = query;
     textSearchPins(query).then(pins => displayPins(pins));
 };
 
