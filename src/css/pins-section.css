@@ -58,6 +58,7 @@ h1 {
     overflow: hidden;
     display: -webkit-box; /* Specify that we want to use webkit-box */
     -webkit-box-orient: vertical; /* Indicate the text direction */
+    line-clamp: 3; /* Set the desired number of lines (used only for compatibility issues with -webkit-line-clamp) */
     -webkit-line-clamp: 3; /* Set the desired number of lines */
 }
 
@@ -67,6 +68,7 @@ h1 {
     overflow: hidden;
     display: -webkit-box; /* Specify that we want to use webkit-box */
     -webkit-box-orient: vertical; /* Indicate the text direction */
+    line-clamp: 10; /* Set the desired number of lines (used only for compatibility issues with -webkit-line-clamp) */
     -webkit-line-clamp: 10; /* Set the desired number of lines */
 }
 
