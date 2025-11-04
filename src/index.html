@@ -136,44 +136,34 @@
             <!------------------------------------------------------------------------------------------------------------>
 
             <section id="pin-section">
-                <span class="material-icons">arrow_back</span>
-                <img id="pin-image" src="https://placecats.com/400/600" alt="Pin image">
-                <h2 id="pin-title">Pin Title</h2>
-                <a href="#" id="pin-link">Visit Link</a>
-                <p id="pin-description">Pin Description</p>
-                <p id="pin-date">Pin Date</p>
-                <div id="img-fullpage">
-                    <span class="material-icons">close</span>
-                    <span class="material-icons">download</span>
+                <span id="display-pin-back-button" class="material-icons">arrow_back</span>
+                <img id="display-pin-image" src="https://placecats.com/400/600" alt="Pin image">
+                <h2 id="display-pin-title">Pin Title</h2>
+                <a href="#" id="display-pin-link" target="_blank">Visit Link</a>
+                <p id="display-pin-description">Pin Description</p>
+                <p id="display-pin-created-at">Pin Date</p>
+                <p id="display-pin-updated-at">Pin Updated Date</p>
+                <div id="display-pin-img-fullpage-controls">
+                    <button id="display-pin-img-fullpage-open"><span class="material-icons">zoom_in</span></button>
+                    <button id="display-pin-img-fullpage-close"><span class="material-icons">close</span></button>
+                    <button id="display-pin-img-fullpage-download"><span class="material-icons">download</span></button>
                 </div>
                 <aside>
-                    <button id="copy-pin-button" class="icon-button">
+                    <button id="display-pin-copy-button" class="icon-button">
                         <span class="material-icons">content_copy</span>
                         <span>Copy</span>
                     </button>
-                    <button id="more-options-button" class="icon-button">
+                    <button id="display-pin-more-options-button" class="icon-button">
                         <span class="material-icons">more_horiz</span>
                         <span>More</span>
                     </button>
                     <!-- More options popup -->
-                    <div id="more-options-popup" class="hidden">
-                        <div id="pin-color-picker">
-                            <button id="color-green"></button>
-                            <button id="color-yellow"></button>
-                            <button id="color-orange"></button>
-                            <button id="color-red"></button>
-                            <button id="color-purple"></button>
-                            <button id="color-blue"></button>
-                            <button id="color-pink"></button>
-                            <button id="color-white"></button>
-                            <button id="color-gray"></button>
-                            <button id="color-black"></button>
-                        </div>
-                        <button id="edit-pin-button">
+                    <div id="display-pin-more-options-popup" class="hidden">
+                        <a id="display-pin-edit-link">
                             <span class="material-icons">edit</span>
                             <span>Edit</span>
-                        </button>
-                        <button id="delete-pin-button">
+                        </a>
+                        <button id="display-pin-delete-button">
                             <span class="material-icons">delete</span>
                             <span>Delete</span>
                         </button>

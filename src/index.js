@@ -4,6 +4,7 @@ import {displaySection, activateLink} from './helpers.js';
 
 import {displayAllPins, displaySearchedPins} from './sections/pins.js';
 import {displayForm, isLeavingFormUnsaved} from './sections/create.js';
+import {displayPin} from './sections/pin.js';
 
 const router = () => {
     
@@ -27,7 +28,7 @@ const router = () => {
         case '#pins':
             if(hashs[1]){
                 displaySection(`pin`);
-                // future single pin display code goes here
+                displayPin(parseInt(hashs[1]));
             } else {
                 window.location.hash = '#home';
                 displaySection('pins');
