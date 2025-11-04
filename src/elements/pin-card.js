@@ -13,18 +13,6 @@ class PinCard extends HTMLElement {
         this.render();
     }
 
-    // disconnectedCallback() {
-    //     // Remove the Pin from IndexedDB when the element is removed from the DOM
-    //     const pinId = this.getAttribute('id') ? parseInt(this.getAttribute('id')) : null;
-    //     if (pinId) {
-    //         deletePin(pinId).catch((error) => {
-    //             console.error('Error deleting pin from database:', error);
-    //         });
-    //     } else {
-    //         console.error('PinCard element is missing required "id" attribute for deletion.');
-    //     }
-    // }
-
     render() {
         // Create a new element from the template in the index.html
         const fragment = document.querySelector('#pin-template').content.cloneNode(true);
@@ -112,11 +100,17 @@ class PinCard extends HTMLElement {
                     })
                 ]).then(() => {
                     textDialog('Pin data copied to clipboard!', 2000, 'success');
+                }).catch((error) => {
+                    textDialog('Error copying pin data to clipboard.', 4000, 'error');
+                    console.error('Error copying pin data to clipboard:', error);
                 });
             } else {
                 navigator.clipboard.writeText(text)
                 .then(() => {
                     textDialog('Only pin text data could be copied to clipboard! The image format is not supported.', 2000, 'warning');
+                }).catch((error) => {
+                    textDialog('Error copying pin text data to clipboard.', 4000, 'error');
+                    console.error('Error copying pin text data to clipboard:', error);
                 });
             }
         });
@@ -124,6 +118,9 @@ class PinCard extends HTMLElement {
             navigator.clipboard.writeText(text)
             .then(() => {
                 textDialog('Pin data copied to clipboard!', 2000, 'success');
+            }).catch((error) => {
+                textDialog('Error copying pin data.', 4000, 'error');
+                console.error('Error copying pin data:', error);
             });
         }
     }
