@@ -141,7 +141,7 @@ h1 {
     flex-direction: column;
     border-radius: var(--border-radius);
     background-color: var(--primary-color);
-    outline: 0.2rem solid var(--bg-color);
+    outline: 0.12rem solid var(--text-color);
     color: var(--bg-color);
     position: absolute;
     right: 0.2rem;
