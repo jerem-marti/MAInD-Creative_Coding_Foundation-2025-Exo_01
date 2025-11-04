@@ -48,6 +48,18 @@ class PinCard extends HTMLElement {
             fragment.querySelector('.masonry-pin-description').remove();
         }
 
+        // Add event listener to the pin card to open the pin details
+        newPinElement.addEventListener('click', (e) => {
+            // Prevent the click event from propagating if a button or link is clicked
+            if (!e.target.closest('button, a')) {
+                // Open the pin details by clicking on the pin link
+                const pinLink = newPinElement.querySelector('.masonry-pin-link');
+                if (pinLink) {
+                    pinLink.click();
+                }
+            }
+        });
+
         // Add event listener to the copy the content of the pin to clipboard
         fragment.querySelector('.masonry-pin-copy-button')?.addEventListener('click', (e) => {
             e.preventDefault();
