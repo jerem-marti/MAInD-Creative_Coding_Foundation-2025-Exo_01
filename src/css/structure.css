@@ -92,6 +92,18 @@ header {
   background: linear-gradient(0deg, var(--bg-color) 0%, var(--primary-color-dark) 150%);
 }
 
+h1 {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin-right: -1px;
+    margin-top: -1px;
+}
+
 header #search-input {
   flex: 1;
   max-width: 1440px;

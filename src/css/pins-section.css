@@ -1,18 +1,6 @@
 /* --------------------------------------------------------------------------------- */
 /* Pin structure */
 
-h1 {
-    visibility: hidden;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    margin-right: -1px;
-    margin-top: -1px;
-}
-
 #masonry-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
