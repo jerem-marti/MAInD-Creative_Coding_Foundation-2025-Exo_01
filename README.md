@@ -52,8 +52,8 @@ Open one to focus on the image, visit the linked site, see timestamps, or make q
 
 ### Key Features
 - Create pins. Upload an image, choose a color, enter a title, and optionally add description and link. ![Pin creation page](./docs/create-computer.png)
-- Searchable board. Find pins via the search bar.
-- Pin details view. Open a pin to view the image, the complete text, the link if exists, and see created/updated timestamps. ![Pin masonry view](./docs/home-computer.png)
+- Searchable board. Find pins via the search bar.![Pin masonry view](./docs/home-computer.png)
+- Pin details view. Open a pin to view the image, the complete text, the link if exists, and see created/updated timestamps. ![Pin page](./docs/pin-computer.png)
 - Edit anytime. Update color, title, description, link, or image. ![Update pin form](./docs/edit-computer.png)
 - One-click copy. Copy a pin’s data to your clipboard and get immediate confirmation via a toast message. ![Copy to Clipborad dialog confirmation](./docs/dialog-computer.png)
 - Protected deletions. Confirm before removing a pin to avoid mistakes (see confirm-dialog-computer.png). ![Confirm deletion](./docs/confirm-dialog-computer.png)
