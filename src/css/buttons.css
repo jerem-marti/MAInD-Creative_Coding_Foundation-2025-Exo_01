@@ -18,9 +18,31 @@ button, .button {
   gap: 0.5rem;
 }
 
+button.secondary, .button.secondary {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
 button:hover, .button:hover {
   background-color: var(--text-color);
   color: var(--primary-color);
+}
+
+button.secondary:hover, .button.secondary:hover { 
+  color: var(--primary-color);
+}
+
+button:focus, .button:focus {
+  outline: 0.2rem solid var(--grey-light);
+}
+
+button.secondary:focus, .button.secondary:focus {
+  outline: 0.2rem solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+button:active, .button:active {
+  transform: scale(1.05);
 }
 
 button.icon-button, .button.icon-button {

@@ -1,15 +1,11 @@
 /********************************************************************************/
 /* dialog */
 dialog {
-  background-color: var(--text-color);
+  background-color: var(--bg-color);
   border: none;
   border-radius: var(--border-radius);
   padding: 2rem;
   max-width: 100dvw;
-}
-
-dialog * {
-  color: var(--bg-color);
 }
 
 dialog::backdrop {
@@ -27,3 +23,62 @@ dialog.success {
 dialog.warning {
   background-color: orange;
 }
+
+/********************************************************************************/
+/* Confirmation Dialog */
+dialog.confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  outline: 0.2rem solid lightcoral;
+}
+
+dialog.confirm .dialog-header {
+  display: flex;
+  gap: 0.6rem;
+  background-color: lightcoral;
+  padding: 2rem 2rem 1rem 2rem;
+}
+
+dialog.confirm .dialog-header h2 {
+  margin: 0;
+  align-self: center;
+  color: darkred;
+}
+
+dialog.confirm .dialog-icon {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+  color: darkred;
+}
+
+dialog.confirm p {
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+dialog.confirm .dialog-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 2rem 2rem 2rem;
+}
+
+dialog.confirm .dialog-buttons.reverse {
+  flex-direction: row-reverse;
+}
+
+dialog.confirm .dialog-buttons button {
+  flex: 1;
+}
+
+
+
+/* <span class="material-icons dialog-icon">help_outline</span>
+            <h2>Confirmation</h2>
+            <p>${question}</p>
+            <div class="dialog-buttons ${reverse ? 'reverse' : ''}">
+                <button class="primary">${primaryBtnText}</button>
+                <button class="secondary">${secondaryBtnText}</button>
+            </div> */

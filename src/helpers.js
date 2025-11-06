@@ -66,8 +66,10 @@ const confirmDialog = (question, primaryBtnText, secondaryBtnText, reverse = fal
         const dialog = document.querySelector('dialog');
         dialog.className = 'confirm';
         dialog.innerHTML = `
-            <span class="material-icons dialog-icon">help_outline</span>
-            <h2>Confirmation</h2>
+            <div class="dialog-header">
+                <span class="material-icons dialog-icon">warning</span>
+                <h2>Confirmation</h2>
+            </div>
             <p>${question}</p>
             <div class="dialog-buttons ${reverse ? 'reverse' : ''}">
                 <button class="primary">${primaryBtnText}</button>
@@ -76,11 +78,13 @@ const confirmDialog = (question, primaryBtnText, secondaryBtnText, reverse = fal
         `;
 
         dialog.querySelector('.primary').addEventListener('click', () => {
+            dialog.classList.remove('confirm');
             dialog.close();
             resolve(true);
         });
 
         dialog.querySelector('.secondary').addEventListener('click', () => {
+            dialog.classList.remove('confirm');
             dialog.close();
             resolve(false);
         });
