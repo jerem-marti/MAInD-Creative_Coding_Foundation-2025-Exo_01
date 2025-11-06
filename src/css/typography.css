@@ -43,3 +43,35 @@ h6 {
 .material-icons {
   vertical-align: middle;
 }
+
+/* --------------------------------------------------------------------------------- */
+/* Media Queries */
+@media (max-width: 1024px) {
+  html {
+    font-size: var(--tablet-font-size);
+  }
+  h2 {
+    font-size: var(--tablet-text-size-h2);
+  }
+  h3 {
+    font-size: var(--tablet-text-size-h3);
+  }
+  h4 {
+    font-size: var(--tablet-text-size-h4);
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: var(--mobile-font-size);
+  }
+  h2 {
+    font-size: var(--mobile-text-size-h2);
+  }
+  h3 {
+    font-size: var(--mobile-text-size-h3);
+  }
+  h4 {
+    font-size: var(--mobile-text-size-h4);
+  }
+}

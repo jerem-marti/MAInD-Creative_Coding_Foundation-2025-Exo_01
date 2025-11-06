@@ -1,4 +1,4 @@
-/********************************************************************************/
+/* --------------------------------------------------------------------------------- */
 /* html body */
 
 /* Make sure the html and body take the full height of the viewport */
@@ -19,7 +19,7 @@ body .container {
   flex-direction: column;
 }
 
-/********************************************************************************/
+/* --------------------------------------------------------------------------------- */
 /* nav */
 
 nav {
@@ -80,7 +80,7 @@ nav a.active .material-icons-outlined {
   display: none;
 }
 
-/********************************************************************************/
+/* --------------------------------------------------------------------------------- */
 /* header */
 
 header {
@@ -151,7 +151,7 @@ body:has(#pins-section.active) header #search-button, body:has(#pins-section.act
     display: block;
 }
 
-/********************************************************************************/
+/* --------------------------------------------------------------------------------- */
 /* main */
 
 main {
@@ -176,9 +176,10 @@ main section.active {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    height: auto;
 }
 
-/********************************************************************************/
+/* --------------------------------------------------------------------------------- */
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 0.3rem;
@@ -196,3 +197,23 @@ main section.active {
 }
 
 
+/* --------------------------------------------------------------------------------- */
+/* Media Queries */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  nav {
+    flex-direction: row;
+    justify-content: space-around;
+    height: auto;
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  nav a .material-icons, 
+  nav a .material-icons-outlined {
+    font-size: 2rem;
+  }
+}

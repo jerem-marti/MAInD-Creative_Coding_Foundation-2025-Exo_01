@@ -5,7 +5,7 @@ dialog {
   border: none;
   border-radius: var(--border-radius);
   padding: 2rem;
-  max-width: 100dvw;
+  max-width: 95dvw;
 }
 
 dialog::backdrop {

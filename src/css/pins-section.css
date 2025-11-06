@@ -152,3 +152,9 @@ h1 {
 .masonry-pin:has(.masonry-pin-image):has(.masonry-pin-description) {
     grid-row: auto / span 40;
 }
+
+/* --------------------------------------------------------------------------------- */
+/* Media Queries */
+@media (max-width: 768px) {
+    
+}
