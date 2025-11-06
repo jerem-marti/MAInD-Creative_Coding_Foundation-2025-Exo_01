@@ -1,0 +1,41 @@
+---
+config:
+  layout: fixed
+  look: neo
+  theme: redux
+---
+flowchart TD
+ subgraph s1["<span style=color:>Controllers</span>"]
+        sections["sections"]
+        S1["pins.js"]
+        S3["create.js"]
+        S2["pin.js"]
+  end
+ subgraph s2["Vue"]
+        css["css"]
+        C1["*.css"]
+        elements["elements"]
+        E1["pin-card.js"]
+        index.html["index.html"]
+  end
+ subgraph s3["Model"]
+        indexed-db.js["indexed-db.js"]
+  end
+    css --> C1
+    elements --> E1 & index.html
+    index.html --> css
+    index.js["index.js"] --> helpers.js["helpers.js"] & elements & s1
+    sections --> S1 & S3 & S2
+    index.js ~~~ S1
+    s1 --> s3
+    n1["Filled Circle"] --> index.js
+    n1 -.-> index.html
+    index.html -.-> index.js
+    n2["Entry point"]
+    n1@{ shape: f-circ}
+    n2@{ shape: text}
+    style s1 fill:transparent,color:#FFFFFF,stroke:#2962FF
+    style s3 stroke:#2962FF,fill:transparent
+    style s2 fill:transparent,stroke:#2962FF
+    linkStyle 13 stroke:#757575,fill:none
+    linkStyle 14 stroke:#757575

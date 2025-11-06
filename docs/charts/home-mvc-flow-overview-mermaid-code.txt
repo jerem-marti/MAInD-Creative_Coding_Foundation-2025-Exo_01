@@ -1,0 +1,27 @@
+---
+config:
+  layout: fixed
+  theme: dark
+---
+flowchart LR
+ subgraph View["View"]
+        V1["index.html templates"]
+        V2["custom element"]
+        V3["#masonry-list container"]
+        V4["Search input"]
+  end
+ subgraph Controller["Controller"]
+        C1["sections/pins.js displayAllPins() displaySearchedPins()"]
+        C2["index.js router #home,#search-&lt;q&gt;"]
+  end
+ subgraph Model["Model"]
+        M1["indexed-db.js getAllPins() textSearchPins(q) add/update/delete"]
+  end
+    U["User"] -- Type/search, click --> V4
+    V4 -- updates hash --> C2
+    C2 -- route --> C1
+    C1 -- reads --> M1
+    M1 -- pins[] --> C1
+    C1 -- render --> V3
+    V3 -- each pin --> V2
+    V2 -- actions (copy/delete) --> M1
