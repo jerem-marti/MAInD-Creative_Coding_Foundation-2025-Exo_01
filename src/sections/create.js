@@ -6,6 +6,7 @@ import { addPin, updatePin } from "../indexed-db";
 import { textDialog, confirmDialog } from "../helpers";
 
 // Form
+const sectionTitle = document.getElementById('create-section-title');
 const form = document.getElementById('create-pin-form');
 
 // Fields
@@ -47,6 +48,7 @@ const displayForm = (pinId = null) => {
 const newPinForm = () => {
     // Set the flag to indicate we are creating a new pin
     pinBeingUpdated = null;
+    sectionTitle.textContent = 'Create New Pin';
     submitButton.textContent = 'Create Pin';
     submitButton.onclick = () => {
         const file = imageInput.files[0] || null;
@@ -77,6 +79,8 @@ const updatePinForm = (pinId) => {
     getPin(pinId).then((pinData) => {
         // Set the flag to indicate we are updating an existing pin
         pinBeingUpdated = pinData;
+        // Update the section title
+        sectionTitle.textContent = 'Edit Pin';
         // Populate the form fields with the existing pin data
         colorInput.value = pinData.color || '';
         titleInput.value = pinData.title || '';
