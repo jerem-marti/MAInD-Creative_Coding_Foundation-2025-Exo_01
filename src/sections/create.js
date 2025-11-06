@@ -1,3 +1,6 @@
+/**
+ * @file Controller for the create/edit pin form.
+ */
 import { getPin } from "../indexed-db";
 import { addPin, updatePin } from "../indexed-db";
 import { textDialog, confirmDialog } from "../helpers";
@@ -20,6 +23,11 @@ const dialog = document.querySelector('dialog');
 // In update mode, holds the state. Also used to know if we are in update or create mode.
 let pinBeingUpdated = null;
 
+/** 
+ * Display the create/edit pin form.
+ * If pinId is provided, load pin data for editing.
+ * @param {number|null} pinId
+ */
 const displayForm = (pinId = null) => {
 
     //reset form
@@ -32,6 +40,10 @@ const displayForm = (pinId = null) => {
     }
 };
 
+/**
+ * Set up the form for creating a new pin.
+ * @returns {void}
+ */
 const newPinForm = () => {
     // Set the flag to indicate we are creating a new pin
     pinBeingUpdated = null;
@@ -54,6 +66,11 @@ const newPinForm = () => {
     };
 }
 
+/** 
+ * Set up the form for editing an existing pin.
+ * @param {number} pinId
+ * @returns {void}
+ */
 const updatePinForm = (pinId) => {
     // If an ID is present, fetch the pin data for editing
     pinId = parseInt(pinId);
@@ -94,12 +111,20 @@ const updatePinForm = (pinId) => {
     });
 };
 
+/** 
+ * Reset the form to its initial state.
+ * @returns {void}
+ */
 const resetForm = () => {
     form.reset();
     imagePreview.src = '';
     imagePreview.classList.remove('active');
 };
 
+/** 
+ * Check if the form has been edited.
+ * @returns {boolean}
+ */
 const hasBeenEdited = () => {
     if (pinBeingUpdated && 
         (titleInput.value !== pinBeingUpdated.title || descriptionInput.value !== pinBeingUpdated.description || linkInput.value !== pinBeingUpdated.link
@@ -116,6 +141,11 @@ const hasBeenEdited = () => {
     return false;
 };
 
+/** 
+ * Check if the user is leaving the form with unsaved changes.
+ * If so, prompt for confirmation.
+ * @returns {Promise<boolean>} Resolves to true if the user decides to stay, false if they leave.
+*/
 const isLeavingFormUnsaved = () => {
     return new Promise((resolve) => {
         const isActiveSection = document.getElementById('create-section').classList.contains('active');

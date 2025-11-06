@@ -1,17 +1,31 @@
+/**
+ * @file IndexedDB wrapper for managing pins.
+ * Provides functions to add, update, delete, and fetch pins.
+ * This is the model layer of the application.
+ */
+
+/* IndexedDB configuration */
 const DB_NAME = 'pinboard_db';
 const DB_VERSION = 1;
 const DB_STORE_NAME = 'pins';
 
+// IndexedDB database instance
 let db;
 
+/** 
+ * Open the IndexedDB database and initialize object stores if needed.
+ * @returns {Promise<IDBDatabase>}
+ */
 function openDb() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
 
+    // Handle the case where the database is blocked (e.g., by another open connection)
     request.onblocked = () => {
       console.warn('Database open request is blocked. Please close other tabs with this site open.');
     };
 
+    // Handle successful database open
     request.onsuccess = (event) => {
       db = event.target.result;
       // Generic error handler for all errors targeted at this database's requests!
@@ -19,6 +33,7 @@ function openDb() {
       db.onerror = (event) => {
         console.error('Database error:', event.target.error?.message);
       }
+      // Handle database version change (e.g., when a new version is available)
       db.onversionchange = () => {
         db.close();
         alert('A new version of the database is available. Please reload the page to update.');
@@ -26,11 +41,13 @@ function openDb() {
       resolve(db);
     };
 
+    // Handle database open errors
     request.onerror = (event) => {
       console.error('Error opening database:', event.target.error?.message);
       reject(event);
     };
 
+    // Handle database upgrades (e.g., creating object stores and indexes)
     request.onupgradeneeded = (event) => {
       db = event.target.result;
       if (!db.objectStoreNames.contains(DB_STORE_NAME)) {
@@ -41,11 +58,24 @@ function openDb() {
   });
 }
 
+/**
+ * Get the object store in the specified mode.
+ * mode can be 'readonly', 'readwrite' or 'versionchange'.
+ * @param {*} storeName 
+ * @param {*} mode 
+ * @returns 
+ */
 function getObjectStore(storeName, mode) {
   const tx = db.transaction(storeName, mode);
   return tx.objectStore(storeName);
 }
 
+/**
+ * Create indexes for the pin object store.
+ * Indexes permit to use property-based searches like in SQL databases.
+ * Created on title, description, color, createdAt, and updatedAt properties.
+ * @param {*} store 
+ */
 function createPinIndexs(store) {
   // Create an index on the 'title' property
   if (!store.indexNames.contains('title')) {
@@ -68,6 +98,11 @@ function createPinIndexs(store) {
   }
 }
 
+/**
+ * Validate the pin object.
+ * @param {*} pin 
+ * @returns {boolean}
+ */
 function validatePin(pin) {
   if (!pin.title || !pin.color) {
     console.error('Missing mandatory pin fields:', pin);
@@ -76,6 +111,11 @@ function validatePin(pin) {
   return true;
 }
 
+/**
+ * Update the createdAt and updatedAt timestamps of a pin.
+ * @param {*} pin 
+ * @param {*} isNew 
+ */
 function updateTimestamps(pin, isNew = false) {
   const now = new Date().toISOString();
     if (isNew) {
@@ -84,6 +124,12 @@ function updateTimestamps(pin, isNew = false) {
   pin.updatedAt = now;
 }
 
+/**
+ * Add a new pin to the database.
+ * A validation is performed before adding the pin.
+ * @param {*} pin 
+ * @returns 
+ */
 export async function addPin(pin) {
   await CheckDbInitialization();
   const store = getObjectStore(DB_STORE_NAME, 'readwrite');
@@ -104,6 +150,12 @@ export async function addPin(pin) {
   });
 }
 
+/**
+ * Update an existing pin in the database.
+ * A validation is performed before updating the pin.
+ * @param {*} pin 
+ * @returns 
+ */
 export async function updatePin(pin) {
   await CheckDbInitialization();
   const store = getObjectStore(DB_STORE_NAME, 'readwrite');
@@ -123,6 +175,11 @@ export async function updatePin(pin) {
   });
 }
 
+/**
+ * Get a pin by its ID.
+ * @param {*} id 
+ * @returns 
+ */
 export async function getPin(id) {
     await CheckDbInitialization();
     const store = getObjectStore(DB_STORE_NAME, 'readonly');
@@ -138,6 +195,10 @@ export async function getPin(id) {
     });
 }
 
+/**
+ * Get all pins from the database.
+ * @returns {Promise<Array>} A promise that resolves to an array of pins.
+ */
 export async function getAllPins() {
   await CheckDbInitialization();
   const store = getObjectStore(DB_STORE_NAME, 'readonly');
@@ -153,6 +214,11 @@ export async function getAllPins() {
   });
 }
 
+/**
+ * Search pins by text by using the title and description indexes.
+ * @param {*} query 
+ * @returns 
+ */
 export async function textSearchPins(query) {
   await CheckDbInitialization();
   const store = getObjectStore(DB_STORE_NAME, 'readonly');
@@ -178,6 +244,11 @@ export async function textSearchPins(query) {
   });
 }
 
+/**
+ * Delete a pin by its ID.
+ * @param {*} id 
+ * @returns 
+ */
 export async function deletePin(id) {
   await CheckDbInitialization();
   const store = getObjectStore(DB_STORE_NAME, 'readwrite');
@@ -193,6 +264,10 @@ export async function deletePin(id) {
   });
 }
 
+/**
+ * Clear all pins from the database.
+ * @returns 
+ */
 export async function clearPins() {
   await CheckDbInitialization();
   const store = getObjectStore(DB_STORE_NAME, 'readwrite');
@@ -208,12 +283,17 @@ export async function clearPins() {
   });
 }
 
+/**
+ * Check if the database is initialized, and open it if not.
+ * @returns {Promise<void>}
+ */
 export async function CheckDbInitialization() {
   if (!db) {
     await openDb();
   }
 }
 
+// Initialize the database connection on module load
 CheckDbInitialization();
 
 export default {

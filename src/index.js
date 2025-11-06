@@ -1,3 +1,7 @@
+/**
+ * @file Router for the application.
+ * Handles navigation between different sections based on URL hash.
+ */
 import './elements/pin-card.js';
 
 import {displaySection, activateLink} from './helpers.js';

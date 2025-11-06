@@ -1,7 +1,14 @@
+/**
+ * @file Helper functions for navigation, dialogs, and search bar.
+ */
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Navigation helper functions
 
-// Hide the active section and show the section coresponding to the given id
+/**
+ * Activate the section corresponding to the given id and hide the others.
+ * @param {*} id 
+ */
 const displaySection = (id) => {
     // Hide the currently active section if any
     document.querySelectorAll('section.active')?.forEach(section => section.classList.remove('active'));
@@ -10,7 +17,10 @@ const displaySection = (id) => {
     document.querySelector(`#${id}-section`)?.classList.add('active');
 };
 
-// Hide the active nav link and show the link coresponding to the given id
+/**
+ * Activate the link (nav a) corresponding to the given id and hide the others.
+ * @param {*} id 
+ */
 const activateLink = (id) => {
     // Deactivate the currently active link if any
     document.querySelector('nav a.active')?.classList.remove('active');
@@ -49,6 +59,13 @@ searchButton.addEventListener('click', () => {
 
 const dialog = document.querySelector('dialog');
 
+/**
+ * Display a temporary message to the user.
+ * 4 different types are available: 'success', 'error', 'warning', 'neutral' (default).
+ * @param {*} message 
+ * @param {*} duration 
+ * @param {*} type 
+ */
 const textDialog = (message, duration = 2000, type = 'neutral') => {
     dialog.textContent = message;
     dialog.className = type;
@@ -59,6 +76,15 @@ const textDialog = (message, duration = 2000, type = 'neutral') => {
     }, duration);
 };
 
+/**
+ * Display a confirmation dialog with a question and two buttons.
+ * Returns a Promise that resolves to true if the primary button is clicked, false otherwise.
+ * @param {string} question 
+ * @param {string} primaryBtnText 
+ * @param {string} secondaryBtnText
+ * @param {boolean} reverse - If true, the button order is reversed.
+ * @returns {Promise<boolean>}
+ */
 const confirmDialog = (question, primaryBtnText, secondaryBtnText, reverse = false) => {
     return new Promise((resolve) => {
 
@@ -128,18 +154,4 @@ const confirmDialog = (question, primaryBtnText, secondaryBtnText, reverse = fal
     });
 };
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Color helper functions
-
-const calcTextColor = (bgColor) => {
-    // Calculate the perceptive luminance (aka luma) - human eye favors green color
-    const r = bgColor.r;
-    const g = bgColor.g;
-    const b = bgColor.b;
-    const luma = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-
-    // Return a contrasting text color (black or white) based on the background color's luminance
-    return luma > 0.5 ? 'black' : 'white';
-};
-
-export {displaySection, activateLink, textDialog, confirmDialog, calcTextColor};
+export {displaySection, activateLink, textDialog, confirmDialog};

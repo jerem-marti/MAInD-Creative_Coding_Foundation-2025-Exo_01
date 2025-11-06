@@ -1,9 +1,16 @@
+/**
+ * @file Controller of the pins display section.
+ */
 import { getAllPins, textSearchPins } from "../indexed-db";
 
 // Elements
 const pinsContainer = document.getElementById('masonry-list');
 const searchInput = document.getElementById('search-input');
 
+/** 
+ * Display a list of pins in the pins section.
+ * @param {Array} pins
+ */
 const displayPins = (pins) => {
     // Clear existing pins
     pinsContainer.innerHTML = '';
@@ -23,6 +30,10 @@ const displayPins = (pins) => {
     });
 };
 
+/** 
+ * Fetch and display all pins in the pins section.
+ * @returns {void}
+ */
 const displayAllPins = () => {
     searchInput.value = '';
     getAllPins().then(pins => {
@@ -30,6 +41,11 @@ const displayAllPins = () => {
     });
 };
 
+/**
+ * Fetch and display pins matching the search query.
+ * @param {string} query
+ * @returns {void}
+*/
 const displaySearchedPins = (query) => {
     searchInput.value = query;
     textSearchPins(query).then(pins => displayPins(pins));

@@ -5,14 +5,21 @@ import { textDialog, confirmDialog, calcTextColor } from '../helpers';
 const copyToClipboard = new CustomEvent('copy-to-clipboard');
 const moreOptions = new CustomEvent('more-options');
 
-// Define the PinCard custom element
+/** 
+ * @class PinCard
+ * @description <pin-card> element: renders a pin from a template and wires actions.
+ * @extends HTMLElement
+ * @example <pin-card id="1" color="red" title="Sample Pin" description="This is a sample pin." image="blob:http://..." link="http://example.com" created-at="2024-01-01T12:00:00Z" updated-at="2024-01-02T12:00:00Z"></pin-card>
+ */
 class PinCard extends HTMLElement {
 
-    // This method is called when the element is added to the DOM
-    connectedCallback() {
-        this.render();
-    }
+    /** Called when the element is inserted into the document. */
+    connectedCallback() { this.render(); }
 
+    /** 
+     * Render the pin card element.
+     * @returns {void}
+     */
     render() {
         // Create a new element from the template in the index.html
         const fragment = document.querySelector('#pin-template').content.cloneNode(true);
@@ -82,6 +89,10 @@ class PinCard extends HTMLElement {
         this.replaceWith(fragment);
     }
 
+    /** 
+     * Get pin data from element attributes.
+     * @returns {Object} Pin data object
+     */
     getData() {
         return {
             id: this.getAttribute('id') ? parseInt(this.getAttribute('id')) : undefined,
@@ -95,6 +106,12 @@ class PinCard extends HTMLElement {
         };
     }
 
+    /** 
+     * Copy pin data to clipboard.
+     * If the pin has an image and the image type is supported, copy both text and image.
+     * Otherwise, copy only the text data and notify the user.
+     * @returns {void}
+     */
     copyToClipboard() {
         const pinData = this.getData();
         let text = '';
@@ -164,6 +181,11 @@ class PinCard extends HTMLElement {
         //     console.error('Error copying pin data:', error);
         // });
     
+    /** 
+     * Toggle the visibility of the more options tooltip.
+     * @param {Element} pinElement - The pin card element.
+     * @returns {void}
+     */
     toggleMoreOptions(pinElement) {
         const moreOptionsElement = pinElement.querySelector('.masonry-pin-more-options');
         if (!moreOptionsElement) {
@@ -190,6 +212,11 @@ class PinCard extends HTMLElement {
         }
     }
 
+    /** 
+     * Delete the pin after user confirmation.
+     * @param {Element} pinElement - The pin card element.
+     * @returns {void}
+     */
     delete(pinElement) {
         const pinId = this.getAttribute('id') ? parseInt(this.getAttribute('id')) : null;
         if (pinId) {

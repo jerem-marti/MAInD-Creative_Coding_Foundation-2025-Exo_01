@@ -1,3 +1,6 @@
+/**
+ * @file controller of the pin display section.
+ */
 import { getPin, deletePin } from "../indexed-db";
 import { textDialog, confirmDialog } from "../helpers";
 
@@ -31,6 +34,11 @@ const pinImageContainer = document.getElementById('display-pin-img-container');
 // Pin store the current displayed pin ID
 let currentPin = null;
 
+/** 
+ * Fetch and display a pin in the pin-section view.
+ * @param {number} pinId
+ * @returns {void}
+ */
 const displayPin = (pinId) => {
     clearPinDisplay();
     getPin(pinId).then((pin) => {
@@ -68,6 +76,10 @@ const displayPin = (pinId) => {
     });
 };
 
+/** 
+ * Clear the pin display section.
+ * @returns {void}
+ */
 const clearPinDisplay = () => {
     currentPin = null;
     pinImage.src = '';
@@ -113,6 +125,7 @@ imgFullpageDownload.addEventListener('click', () => {
     }
 });
 
+/* Copy pin data to clipboard, including image if supported. */
 copyPinButton.addEventListener('click', () => {
     let text = '';
     text += `Title: ${currentPin.title}\n`;
@@ -141,6 +154,7 @@ copyPinButton.addEventListener('click', () => {
     }
 });
 
+/* Toggle more options popup */
 moreOptionsButton.addEventListener('click', () => {
     if (!moreOptionsPopup) {
         console.error('More options popup element not found.');
@@ -164,6 +178,7 @@ moreOptionsButton.addEventListener('click', () => {
     }
 });
 
+/* Delete pin after confirmation */
 deletePinButton.addEventListener('click', () => {
     confirmDialog('Are you sure you want to delete this pin? This is irreversible!', 'Delete', 'Keep')
     .then((confirmed) => {

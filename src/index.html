@@ -21,6 +21,7 @@
     <div class="container">
         <!-- Header -->
         <header>
+            <!-- Title -->
             <h1>Pinboard</h1>
             <!-- Search Input -->
             <input id="search-input" type="search" spellcheck="false" autocapitalize="false" placeholder="Search pins...">
@@ -35,6 +36,7 @@
             <!-- Add the class "active" to the section to display it -->
 
             <!------------------------------------------------------------------------------------------------------------>
+            
             <!--
                 Pins Section
                 This section displays the pins in a masonry layout. When on the home view, all pins are shown.
@@ -46,15 +48,21 @@
                 </ul>
             </section>
 
+            <!-- Pin Template -->
+            <!-- This template is used to create new pins in the masonry layout -->
             <template id="pin-template">
                 <li class="masonry-pin">
+                    <!-- Internal link to edit the pin -->
                     <a class="masonry-pin-link" href="#"></a>
+                    <!-- Pin content -->
                     <div class="masonry-pin-content">
                         <span class="material-icons masonry-pin-link-icon">link</span>
                         <img class="masonry-pin-image" src="https://placecats.com/200/300" alt="Pin image">
                         <h3 class="masonry-pin-title"></h3>
                         <p class="masonry-pin-description"></p>
                     </div>
+                    <!-- Pin footer -->
+                    <!-- Contains the date of the pin and some action buttons -->
                     <footer class="masonry-pin-footer">
                         <span class="masonry-pin-date"></span>
                         <div class="masonry-pin-actions">
@@ -85,9 +93,15 @@
 
             <!------------------------------------------------------------------------------------------------------------>
 
+            <!--
+                Create Section
+                This section is a form that allows users to create a new pin or to edit existing one.
+            -->
+
             <section id="create-section">
                 <h2>Create New Pin</h2>
                 <form id="create-pin-form">
+                    <!-- Image Upload -->
                     <button id="pin-form-image-upload" type="button">
                         <div>
                             <span class="material-icons">upload</span>
@@ -98,6 +112,9 @@
                         <img id="image-preview" src="https://placecats.com/200/300" alt="Uploaded image preview">
                     </button>
 
+                    <!-- Pin information inputs -->
+
+                    <!-- Pin color selection -->
                     <div id="pin-form-details">
                         <fieldset>
                             <legend>Choose a color</legend>
@@ -146,6 +163,10 @@
             </section>
 
             <!------------------------------------------------------------------------------------------------------------>
+
+            <!--
+                Pin Display Section
+            -->
 
             <section id="pin-section">
                 <button id="display-pin-back-button" class="icon-button xxl-button">
@@ -213,8 +234,12 @@
             <!------------------------------------------------------------------------------------------------------------>
 
         </main>
+
+        <!-- Dialog use to display overlay message to the user -->
         <dialog class="">Dialog</dialog>
     </div>
+
+    <!-- Navbar -->
     <nav>
         <a href="#home">
             <span class="material-icons-outlined">home</span>
