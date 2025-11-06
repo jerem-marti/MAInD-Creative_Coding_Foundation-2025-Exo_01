@@ -4,7 +4,7 @@
 // Hide the active section and show the section coresponding to the given id
 const displaySection = (id) => {
     // Hide the currently active section if any
-    document.querySelector('section.active')?.classList.remove('active');
+    document.querySelectorAll('section.active')?.forEach(section => section.classList.remove('active'));
 
     // Try to show the section corresponding to the given id 
     document.querySelector(`#${id}-section`)?.classList.add('active');

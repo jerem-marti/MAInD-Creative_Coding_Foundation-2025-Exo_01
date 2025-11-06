@@ -114,7 +114,7 @@ h1 {
 /* Pin footer */
 .masonry-pin-footer {
     color: inherit;
-    width: calc(100% - 2rem);
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -132,65 +132,6 @@ h1 {
     color: inherit;
     display: flex;
     gap: 0.5rem;
-}
-
-#masonry-list .masonry-pin-actions>* {
-    color: inherit;
-    padding: 0;
-    border-radius: var(--border-radius);
-}
-
-.masonry-pin-actions .material-icons {
-    color: inherit;
-    font-size: 1.5rem;
-    padding: 0;
-}
-
-.masonry-pin-more-options.hidden {
-    display: none;
-}
-
-.masonry-pin-more-options {
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--border-radius);
-    background-color: var(--primary-color);
-    outline: 0.12rem solid var(--text-color);
-    color: var(--bg-color);
-    position: absolute;
-    right: 0.2rem;
-    top: 0.2rem;
-    transform: translate(0, -100%);
-    z-index: 10;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.masonry-pin-more-options>* {
-    cursor: pointer;
-    padding: 0.8rem;
-    transition: var(--default-transition);
-    background-color: transparent;
-    border: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.8rem;
-    border-bottom: 0.05rem solid var(--text-color);
-    text-decoration: none;
-}
-
-.masonry-pin-more-options>*:hover {
-    background-color: var(--primary-color-dark);
-}
-
-.masonry-pin-more-options>:first-child {
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-}
-
-.masonry-pin-more-options>:last-child {
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
-    border: none;
 }
 
 /* --------------------------------------------------------------------------------- */

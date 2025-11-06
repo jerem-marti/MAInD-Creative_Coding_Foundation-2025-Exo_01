@@ -52,20 +52,24 @@
                         <div class="masonry-pin-actions">
                             <button class="masonry-pin-copy-button icon-button" type="button">
                                 <span class="material-icons">content_copy</span>
+                                <span>Copy</span>
                             </button>
-                            <button class="masonry-pin-more-button icon-button" type="button">
-                                <span class="material-icons">more_horiz</span>
-                            </button>
-                        </div>
-                        <div class="masonry-pin-more-options hidden">
-                            <a class="masonry-pin-edit-link" href="#">
-                                <span class="material-icons">edit</span>
-                                <span>Edit</span>
-                            </a>
-                            <button class="masonry-pin-delete-button" type="button">
-                                <span class="material-icons">delete</span>
-                                <span>Delete</span>
-                            </button>
+                            <div class="button-tooltip-container">
+                                <button class="masonry-pin-more-button icon-button" type="button">
+                                    <span class="material-icons">more_horiz</span>
+                                    <span>More options</span>
+                                </button>
+                                <div class="masonry-pin-more-options button-tooltip-list hidden">
+                                    <a class="button masonry-pin-edit-link" href="#">
+                                        <span class="material-icons">edit</span>
+                                        <span>Edit</span>
+                                    </a>
+                                    <button class="masonry-pin-delete-button" type="button">
+                                        <span class="material-icons">delete</span>
+                                        <span>Delete</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </footer>
                 </li>
@@ -136,39 +140,66 @@
             <!------------------------------------------------------------------------------------------------------------>
 
             <section id="pin-section">
-                <span id="display-pin-back-button" class="material-icons">arrow_back</span>
-                <img id="display-pin-image" src="https://placecats.com/400/600" alt="Pin image">
-                <h2 id="display-pin-title">Pin Title</h2>
-                <a href="#" id="display-pin-link" target="_blank">Visit Link</a>
-                <p id="display-pin-description">Pin Description</p>
-                <p id="display-pin-created-at">Pin Date</p>
-                <p id="display-pin-updated-at">Pin Updated Date</p>
-                <div id="display-pin-img-fullpage-controls">
-                    <button id="display-pin-img-fullpage-open"><span class="material-icons">zoom_in</span></button>
-                    <button id="display-pin-img-fullpage-close"><span class="material-icons">close</span></button>
-                    <button id="display-pin-img-fullpage-download"><span class="material-icons">download</span></button>
-                </div>
-                <aside>
-                    <button id="display-pin-copy-button" class="icon-button">
-                        <span class="material-icons">content_copy</span>
-                        <span>Copy</span>
-                    </button>
-                    <button id="display-pin-more-options-button" class="icon-button">
-                        <span class="material-icons">more_horiz</span>
-                        <span>More</span>
-                    </button>
-                    <!-- More options popup -->
-                    <div id="display-pin-more-options-popup" class="hidden">
-                        <a id="display-pin-edit-link">
-                            <span class="material-icons">edit</span>
-                            <span>Edit</span>
-                        </a>
-                        <button id="display-pin-delete-button">
-                            <span class="material-icons">delete</span>
-                            <span>Delete</span>
+                <button id="display-pin-back-button" class="icon-button xxl-button">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                <div id="display-pin">
+                    <aside id="display-pin-actions">
+                        <button id="display-pin-copy-button" class="icon-button xl-button">
+                            <span class="material-icons">content_copy</span>
+                            <span>Copy</span>
                         </button>
+                        <button id="display-pin-img-fullpage-download"  class="icon-button xl-button">
+                            <span class="material-icons">download</span>
+                            <span>Download</span>
+                        </button>
+                        <div class="button-tooltip-container">
+                            <button id="display-pin-more-options-button" class="icon-button xl-button">
+                                <span class="material-icons">more_horiz</span>
+                                <span>More</span>
+                            </button>
+                            <!-- More options -->
+                            <div id="display-pin-more-options" class="button hidden button-tooltip-list">
+                                <a id="display-pin-edit-link">
+                                    <span class="material-icons">edit</span>
+                                    <span>Edit</span>
+                                </a>
+                                <button id="display-pin-delete-button">
+                                    <span class="material-icons">delete</span>
+                                    <span>Delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </aside>
+                    <div id="display-pin-img-container">
+                        <img id="display-pin-image" src="https://placecats.com/400/600" alt="Pin image">
+                        <div id="display-pin-img-fullpage-controls">
+                            <button id="display-pin-img-fullpage-open" class="icon-button xl-button">
+                                <span class="material-icons">open_in_full</span>
+                                <span>Open Fullscreen</span>
+                            </button>
+                            <button id="display-pin-img-fullpage-close" class="icon-button xl-button hidden">
+                                <span class="material-icons">close</span>
+                                <span>Close Fullscreen</span>
+                            </button>
+                        </div>
                     </div>
-                </aside>
+                    <div id="display-pin-details">
+                        <div id="display-pin-title-link-container">
+                            <h2 id="display-pin-title">Pin Title</h2>
+                            <a href="#" id="display-pin-link" target="_blank" class="button l-button">Visit Site</a>
+                        </div>
+                        <p id="display-pin-description">Pin Description</p>
+                        <div id="display-pin-created-at-container">
+                            <span class="footnote">Created At:</span>
+                            <span id="display-pin-created-at" class="footnote">Pin Date</span>
+                        </div>
+                        <div id="display-pin-updated-at-container">
+                            <span class="footnote">Updated At:</span>
+                            <span id="display-pin-updated-at" class="footnote">Pin Updated Date</span>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!------------------------------------------------------------------------------------------------------------>

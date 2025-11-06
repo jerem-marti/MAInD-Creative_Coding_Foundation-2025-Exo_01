@@ -1,40 +1,144 @@
 /********************************************************************************/
 /* buttons */
 
-button {
-    cursor: pointer;
+button, .button {
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color var(--default-transition), color var(--default-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-button.primary {
-    padding: 1rem;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    border: none;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color var(--default-transition), color var(--default-transition);
+button:hover, .button:hover {
+  background-color: var(--text-color);
+  color: var(--primary-color);
 }
 
-button.primary:hover {
-    background-color: var(--text-color);
-    color: var(--primary-color);
-}
-
-button.icon-button {
+button.icon-button, .button.icon-button {
   margin: 0;
-  padding: 5px;
+  padding: 0;
   border: none;
   background-color: transparent;
+  color: inherit;
   line-height: 0;
+  position: relative;
 }
 
-button.icon-button .material-icons {
+button.icon-button span:not(.material-icons),
+.button.icon-button span:not(.material-icons) {
+  position: absolute;
+  visibility: hidden;
+  background-color: var(--border-color);
+  color: var(--grey-light);
+  padding: var(--border-radius);
+  border-radius: var(--border-radius);
+  outline: 0.12rem solid var(--grey-light);
+  left: 50%;
+  bottom: -0.6rem;
+  transform: translate(-50%, 100%);
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  transition: visibility var(--default-transition);
+  font-weight: normal;
+  font-size: var(--text-size-footnote);
+}
+
+button.icon-button:hover span:not(.material-icons),
+.button.icon-button:hover span:not(.material-icons) {
+  visibility: visible;
+}
+
+button.icon-button .material-icons,
+.button.icon-button .material-icons {
+  font-size: 1.6rem;
   transition: color var(--default-transition);
+  color: inherit;
 }
 
-button.icon-button:hover .material-icons {
+button.icon-button:hover .material-icons,
+.button.icon-button:hover .material-icons {
   color: var(--primary-color);
+}
+
+button.l-button, .button.l-button,
+button.l-button .material-icons,
+.button.l-button .material-icons {
+  font-size: 1.6rem;
+}
+
+button.xl-button, .button.xl-button,
+button.xl-button .material-icons,
+.button.xl-button .material-icons {
+  font-size: 2.8rem;
+}
+
+button.xxl-button, .button.xxl-button,
+button.xxl-button .material-icons,
+.button.xxl-button .material-icons {
+  font-size: 4rem;
+}
+
+.button-tooltip-list.hidden {
+    display: none;
+}
+
+.button-tooltip-container {
+    position: relative;
+    color: inherit;
+}
+
+.button-tooltip-list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+    border-radius: var(--border-radius);
+    outline: 0.12rem solid var(--text-color);
+    position: absolute;
+    left: 50%;
+    top: -0.6rem;
+    transform: translate(-50%, -100%);
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-tooltip-list>* {
+    cursor: pointer;
+    padding: 0.8rem;
+    transition: var(--default-transition);
+    background-color: var(--primary-color);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    border-bottom: 0.05rem solid var(--text-color);
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.button-tooltip-list>*:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.button-tooltip-list>:first-child {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.button-tooltip-list>:last-child {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    border: none;
 }
 
 /* colors buttons needed to be defined here */

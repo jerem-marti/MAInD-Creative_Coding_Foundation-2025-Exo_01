@@ -15,6 +15,8 @@ body {
 body .container {
   flex-grow: 1;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 /********************************************************************************/
@@ -113,9 +115,11 @@ header #search-button {
   position: absolute;
   /* right: calc(var(--border-radius) + 2rem); */
   right: max(calc((100% - 1440px)/2 + var(--border-radius)), calc(var(--border-radius) + 2rem));
-  bottom: calc(var(--border-radius)/2 + 2rem);
+  bottom: 50%;
+  transform: translateY(50%);
   cursor: pointer;
   font-size: 3rem;
+  color: var(--border-color);
 }
 
 header .material-icons {    
@@ -140,11 +144,11 @@ header #search-button.active .close-icon {
 }
 
 header #search-input, header #search-button {
-    visibility: hidden;
+    display: none;
 }
 
 body:has(#pins-section.active) header #search-button, body:has(#pins-section.active) header #search-input {
-    visibility: visible;
+    display: block;
 }
 
 /********************************************************************************/
@@ -154,6 +158,8 @@ main {
   flex-grow: 1;
   padding: 2rem;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 main section {

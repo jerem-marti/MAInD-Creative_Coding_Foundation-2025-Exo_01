@@ -1,6 +1,9 @@
 import { getPin, deletePin } from "../indexed-db";
 import { textDialog, confirmDialog } from "../helpers";
 
+// Pin container
+const pinContainer = document.getElementById('display-pin');
+
 // Control elements
 const backButton = document.getElementById('display-pin-back-button');
 const imgFullpageOpen = document.getElementById('display-pin-img-fullpage-open');
@@ -10,7 +13,7 @@ const copyPinButton = document.getElementById('display-pin-copy-button');
 const moreOptionsButton = document.getElementById('display-pin-more-options-button');
 
 // More options popup elements
-const moreOptionsPopup = document.getElementById('display-pin-more-options-popup');
+const moreOptionsPopup = document.getElementById('display-pin-more-options');
 const editPinLink = document.getElementById('display-pin-edit-link');
 const deletePinButton = document.getElementById('display-pin-delete-button');
 
@@ -22,6 +25,9 @@ const pinDescription = document.getElementById('display-pin-description');
 const pinCreatedAt = document.getElementById('display-pin-created-at');
 const pinUpdatedAt = document.getElementById('display-pin-updated-at');
 
+// Image container
+const pinImageContainer = document.getElementById('display-pin-img-container');
+
 // Pin store the current displayed pin ID
 let currentPin = null;
 
@@ -31,14 +37,15 @@ const displayPin = (pinId) => {
         if (pin) {
             // Store the current pin
             currentPin = pin;
+            // Set the pin colors
+            pinContainer.style.backgroundColor = `var(--card-background-color-${pin.color || 'white'})`;
+            pinContainer.style.color = `var(--card-color-${pin.color || 'black'})`;
             // Populate pin data
             if(pin.image) {
                 pinImage.src = URL.createObjectURL(pin.image);
+                pinImage.classList.remove('hidden');
             } else {
                 pinImage.classList.add('hidden');
-                imgFullpageOpen.classList.add('hidden');
-                imgFullpageClose.classList.add('hidden');
-                imgFullpageDownload.classList.add('hidden');
             }
             pinTitle.textContent = pin.title;
             if(pin.link) {
@@ -64,10 +71,9 @@ const displayPin = (pinId) => {
 const clearPinDisplay = () => {
     currentPin = null;
     pinImage.src = '';
-    pinImage.classList.remove('hidden');
+    pinImageContainer.classList.remove('fullpage');
     imgFullpageOpen.classList.remove('hidden');
-    imgFullpageClose.classList.remove('hidden');
-    imgFullpageDownload.classList.remove('hidden');
+    imgFullpageClose.classList.add('hidden');
     pinTitle.textContent = '';
     pinLink.href = '';
     pinLink.classList.remove('hidden');
@@ -83,11 +89,15 @@ backButton.addEventListener('click', () => {
 });
 
 imgFullpageOpen.addEventListener('click', () => {
-    pinImage.classList.add('fullpage');
+    pinImageContainer.classList.add('fullpage');
+    imgFullpageClose.classList.remove('hidden');
+    imgFullpageOpen.classList.add('hidden');
 });
 
 imgFullpageClose.addEventListener('click', () => {
-    pinImage.classList.remove('fullpage');
+    pinImageContainer.classList.remove('fullpage');
+    imgFullpageClose.classList.add('hidden');
+    imgFullpageOpen.classList.remove('hidden');
 });
 
 imgFullpageDownload.addEventListener('click', () => {

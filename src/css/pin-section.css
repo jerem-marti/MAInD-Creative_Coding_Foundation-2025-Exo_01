@@ -1,0 +1,129 @@
+#pin-section.active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0;
+    width: 100%;
+    margin-left: 0;
+}
+
+#display-pin {
+    background-color: var(--card-background-color-blue);
+    color: var(--card-color-blue);
+    border-radius: var(--border-radius);
+    display: flex;
+    /* flex-direction: column; */
+    padding: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    flex-grow: 1;
+    outline: 0.05rem solid var(--grey-light);
+}
+
+#display-pin-actions {
+    /* margin: 0 var(--border-radius); */
+    /* padding: 0.8rem 0 1.2rem 0; */
+    margin: var(--border-radius) 0;
+    padding: 0 1.2rem 0 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    color: inherit;
+}
+
+#display-pin-img-container {
+    width: 100%;
+    position: relative;
+    color: inherit;
+    background-color: inherit;
+    flex: 0 0 50%;
+}
+
+#display-pin-image {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+
+#display-pin-img-container.fullpage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100dvw;
+    height: 100dvh;
+    border-radius: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+#display-pin-img-container.fullpage #display-pin-image {
+    border-radius: 0;
+    object-fit: contain;
+    width: 100dvw;
+    height: 100dvh;
+}
+
+#display-pin-img-fullpage-controls {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    border-radius: var(--border-radius);
+    color: inherit;
+    background-color: inherit;
+    background-blend-mode: overlay;
+    opacity: 0.6;
+}
+
+#display-pin-img-fullpage-controls:hover {
+    opacity: 1;
+    transition: var(--default-transition);
+}
+
+#display-pin-details {
+    /* padding: var(--border-radius) 0; */
+    padding: 0 var(--border-radius) 0 1rem;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+}
+
+#display-pin-details *:not(.button) {
+    color: inherit;
+}
+
+#display-pin-img-container:has(#display-pin-image.hidden),
+#display-pin:has(#display-pin-image.hidden) #display-pin-img-fullpage-download,
+#display-pin-details *.hidden, 
+#display-pin-img-fullpage-controls *.hidden {
+    display: none;
+}
+
+#display-pin-title-link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin: 0 0 0.8rem 0
+}
+
+#display-pin-title {
+    margin: 0;
+}
+
+#display-pin-link {
+    white-space: nowrap;
+    /* margin: 1rem 0 0.6rem 0; */
+    /* padding: 2rem; */
+}
+
+#display-pin-created-at-container {
+    margin-top: auto;
+}
+
+#display-pin-updated-at-container {
+    margin-bottom: var(--border-radius);
+}
+
+
