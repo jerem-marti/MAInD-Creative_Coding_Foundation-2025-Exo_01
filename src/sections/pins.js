@@ -26,7 +26,7 @@ const displayPins = (pins) => {
         if(pin.link) pinElement.setAttribute('link', pin.link);
         pinElement.setAttribute('created-at', pin.createdAt);
         pinElement.setAttribute('updated-at', pin.updatedAt);
-        pinsContainer.appendChild(pinElement);
+        pinsContainer.insertBefore(pinElement, pinsContainer.firstChild);
     });
 };
 
