@@ -42,7 +42,12 @@ button.secondary:focus, .button.secondary:focus {
 }
 
 button:active, .button:active {
-  transform: scale(1.05);
+  outline: 0.8rem solid var(--grey-light);
+}
+
+button.secondary:active, .button.secondary:active {
+  outline: 0.8rem solid var(--primary-color);
+  color: var(--primary-color);
 }
 
 button.icon-button, .button.icon-button {
