@@ -3,8 +3,8 @@
 
 #create-pin-form {
   display: flex;
-  align-items: stretch;
   gap: 2rem;
+  width: 100%;
 }
 
 #create-pin-form>* {
@@ -12,10 +12,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-basis: 50%;
 }
 
-#pin-form-image-upload {   
-  flex-basis: 45%;
+#pin-form-image-upload {
   gap: 1rem;
   justify-content: space-between;
   position: relative;

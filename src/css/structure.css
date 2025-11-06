@@ -166,11 +166,16 @@ main section {
   flex-direction: column;
   display: none;
   margin: auto;
+  margin-top: 0;
+  width: 100%;
+  margin-left: 0;
   max-width: 1440px;
 }
 
 main section.active {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 /********************************************************************************/
